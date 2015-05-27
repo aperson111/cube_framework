@@ -1,0 +1,10 @@
+<div class="btn-group" data-bind="css:{'open': showOptions}" style="position: relative;">
+	<button class="btn dropdown-toggle" data-toggle="dropdown" 
+			style="padding: 2px 12px;"
+			data-bind="click:doOpen">
+		<!-- ko text: selectValue--><!-- /ko --> <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" data-bind="foreach: items">
+		<li><a href="#" data-bind="text: value,click: doSelect"></a> </li>
+	</ul>
+</div>

@@ -1,0 +1,124 @@
+<div align="left"
+	class="jqx-grid jqx-grid-arctic jqx-reset jqx-reset-arctic jqx-rc-all jqx-rc-all-arctic jqx-widget jqx-widget-arctic jqx-widget-content jqx-widget-content-arctic jqx-disableselect"
+	style="width: 600px; height: 201px;">
+	<div
+		class="jqx-clear jqx-border-reset jqx-overflow-hidden jqx-max-size jqx-position-relative">
+		<div tabindex="1"
+			class="jqx-clear jqx-max-size jqx-position-relative jqx-overflow-hidden jqx-background-reset">
+			<div
+				class="jqx-clear jqx-position-absolute jqx-grid-toolbar jqx-grid-toolbar-arctic jqx-widget-header jqx-widget-header-arctic"
+				style="visibility: hidden; height: 0px;"></div>
+			<div
+				class="jqx-clear jqx-position-absolute jqx-grid-groups-header jqx-grid-groups-header-arctic jqx-widget-header jqx-widget-header-arctic"
+				style="visibility: hidden; width: 600px; height: 0px; top: 0px;"></div>
+			<div
+				class="jqx-clear jqx-overflow-hidden jqx-position-absolute jqx-border-reset jqx-background-reset jqx-reset jqx-reset-arctic jqx-disableselect"
+				tabindex="2" style="top: 0px; width: 600px; height: 202px;">
+				<div
+					style="overflow: hidden; display: block; height: 25px; width: 602px;"
+					class="jqx-widget-header jqx-widget-header-arctic jqx-grid-header jqx-grid-header-arctic">
+					<div data-bind="foreach: columnOptions"
+						style="height: 100%; position: relative; visibility: inherit; width: 600px; margin-left: 0px;">
+						<div data-bind="style:{'z-index':(299-$index()), 'left': ($index()*200)+'px'}"
+							style="position: absolute; height: 100%; width: 200px; "
+							class="jqx-grid-column-header jqx-grid-column-header-arctic jqx-widget-header jqx-widget-header-arctic">
+							<div style="height: 100%; width: 100%;">
+								<div
+									style="padding-bottom: 2px; overflow: hidden; text-overflow: ellipsis; text-align: left; margin-left: 4px; margin-right: 2px; margin-bottom: 4px; margin-top: 4px;">
+									<span style="text-overflow: ellipsis; cursor: default;" data-bind="text:title,attr:{title:title}"></span>
+								</div>
+								<div class="iconscontainer"
+									style="height: 25px; margin-left: -32px; display: block; position: absolute; left: 100%; top: 0%; width: 32px;">
+									<div
+										class="filtericon jqx-widget-header jqx-widget-header-arctic"
+										style="height: 25px; float: right; display: none; width: 16px;">
+										<div
+											class="jqx-grid-column-filterbutton jqx-grid-column-filterbutton-arctic"
+											style="width: 100%; height: 100%;"></div>
+									</div>
+									<div class="sortasc jqx-widget-header jqx-widget-header-arctic"
+										style="height: 25px; float: right; display: none; width: 16px;">
+										<div
+											class="jqx-grid-column-sortascbutton jqx-grid-column-sortascbutton-arctic jqx-icon-arrow-up jqx-icon-arrow-up-arctic"
+											style="width: 100%; height: 100%;"></div>
+									</div>
+									<div
+										class="sortdesc jqx-widget-header jqx-widget-header-arctic"
+										style="height: 25px; float: right; display: none; width: 16px;">
+										<div
+											class="jqx-grid-column-sortdescbutton jqx-grid-column-sortdescbutton-arctic jqx-icon-arrow-down jqx-icon-arrow-down-arctic"
+											style="width: 100%; height: 100%;"></div>
+									</div>
+								</div>
+								<div
+									style="height: 25px; display: none; left: 100%; top: 0%; position: absolute; width: 15px;"
+									class="jqx-widget-header jqx-widget-header-arctic">
+									<div
+										class="jqx-grid-column-menubutton jqx-grid-column-menubutton-arctic jqx-icon-arrow-down jqx-icon-arrow-down-arctic"
+										style="width: 100%; height: 100%;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width: 100%; overflow: hidden; position: absolute;" 
+					class="jqx-grid-content jqx-grid-content-arctic jqx-widget-content jqx-widget-content-arctic">
+					<div data-bind="foreach: columnDatas"
+						style="overflow: hidden; position: relative; opacity: 0.99; width: 602px; margin-left: 0px; top: 0px;">
+						<div style="position: relative; height: 25px;" data-bind="foreach: values,
+										event:{mouseover: showHover, mouseout: hiddenHover},
+										click: doSelect">
+							<div style="width: 200px;" data-bind="style:{'z-index':(799-$parent.rowInd*3 - $index()),left: (200*$index())+'px'},
+								css:{'jqx-grid-cell-hover jqx-grid-cell-hover-arctic jqx-fill-state-hover jqx-fill-state-hover-arctic': $parent.isHover,
+									'jqx-grid-cell-selected jqx-grid-cell-selected-arctic jqx-fill-state-pressed jqx-fill-state-pressed-arctic': $parent.isSelect},
+								event:{dblclick: doEdit}"
+								class="jqx-grid-cell jqx-grid-cell-arctic jqx-item jqx-item-arctic">
+								
+								<!-- ko if: isEdit()==false || $parents[1].columnOptions[$index()].editable==false-->
+									<div style="overflow: hidden; text-overflow: ellipsis;
+												 padding-bottom: 2px; text-align: left; 
+												 margin-right: 2px; margin-left: 4px; margin-top: 4px;"
+												 data-bind="text: value">
+									</div>
+								<!-- /ko -->
+								
+								<!-- ko if: isEdit()==true && $parents[1].columnOptions[$index()].editable==true-->
+									<!-- ko if:$parents[1].columnOptions[$index()].type=="text" -->
+									<input data-bind="value: value"
+										type="textbox" class="jqx-input jqx-input-arctic jqx-widget-content jqx-widget-content-arctic" 
+										style="width: 201px; height: 26px; z-index: 1784; display: block;">
+									<!-- /ko -->
+									
+									<!-- ko if:$parents[1].columnOptions[$index()].type=="dropdownlist" -->
+										<dropdownlist params="items: $parents[3].dropdownlistItems,
+															 selectValue: $parents[3].selectDropdownlistValue">
+										</dropdownlist>
+									<!-- /ko -->
+								<!-- /ko -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="z-index: 99999; visibility: hidden; position: absolute;"
+					class="jqx-grid-selectionarea jqx-grid-selectionarea-arctic jqx-fill-state-pressed jqx-fill-state-pressed-arctic"></div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<!-- 
+<div class="row">
+	<div class="btn-group" data-bind="foreach: columnOptions">
+ 		<button disabled="true" class="btn" style="width:100px" data-bind="text: title"></button>
+	</div>
+</div>
+<div data-bind="foreach: columnDatas">
+<div class="row">
+	<div class="btn-group" data-bind="foreach: values">
+ 		<button class="btn" style="width:100px" data-bind="text: value"></button>
+ 		<input style="width:100px;display: none;" type="text" data-bind="value: value" />
+	</div>
+	</div>
+</div>
+ -->

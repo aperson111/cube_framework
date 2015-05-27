@@ -1,0 +1,14 @@
+body html {
+	font-family: 'Î¢ÈíÑÅºÚ';
+}
+
+/*clock css*/
+.clock {
+	position: relative;
+}
+
+.sec,.min,.hour {
+	position: absolute;
+	top: 0px;
+	z-index: 3;
+}

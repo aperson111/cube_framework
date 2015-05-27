@@ -1,0 +1,36 @@
+<!-- ko if:isSupportHtml5 -->
+<div class="clock">
+	<img class="clock" data-bind="attr:{src:rootPath+'/framework/resources/images/clock/clockface.jpg',
+									width: clockSize, height: clockSize}"></img>
+	<img class="sec" data-bind="attr:{src:rootPath+'/framework/resources/images/clock/hourhand.png',
+									  width: handWidth, height: clockSize},
+									  style:{left: centerLeft()+'px',
+									         'transform': 'rotate('+(time().hh*30+time().mm/2)+'deg)',
+									         '-webkit-transform': 'rotate('+(time().hh*30+time().mm/2)+'deg)',
+									         '-moz-transform': 'rotate('+(time().hh*30+time().mm/2)+'deg)',
+									         '-o-transform': 'rotate('+(time().hh*30+time().mm/2)+'deg)'}"></img>
+	<img class="hour" data-bind="attr:{src:rootPath+'/framework/resources/images/clock/minhand.png',
+									   width: handWidth, height: clockSize},
+									   style:{left: centerLeft()+'px',
+									         'transform': 'rotate('+(time().mm*6+time().ss/10)+'deg)',
+									         '-webkit-transform': 'rotate('+(time().mm*6+time().ss/10)+'deg)',
+									         '-moz-transform': 'rotate('+(time().mm*6+time().ss/10)+'deg)',
+									         '-o-transform': 'rotate('+(time().mm*6+time().ss/10)+'deg)'}"></img>
+	<img class="min" data-bind="attr:{src:rootPath+'/framework/resources/images/clock/sechand.png',
+	                                  width: handWidth, height: clockSize},
+	                                  style:{left: centerLeft()+'px',
+	                                  		'transform': 'rotate('+time().ss*6+'deg)',
+	                                  		'-webkit-transform': 'rotate('+time().ss*6+'deg)',
+	                                  		'-moz-transform': 'rotate('+time().ss*6+'deg)',
+	                                  		'-t-transform': 'rotate('+time().ss*6+'deg)'}"></img>
+</div>
+<!-- /ko -->
+
+<!-- ko ifnot:isSupportHtml5 -->
+<div data-bind="style:{width:clockSize()+'px',height:(clockSize()/2)+'px',fontSize:fontSize()+'px'}" 
+     style="position: relative;color: #e3e3e3">
+    <img style="z-index: -1;position: absolute; left:0px;top:0px;" data-bind="attr:{src: rootPath+'/framework/resources/images/clock/clockbck.gif',
+    		   width: clockSize, height: clockSize()/2}"></img>
+	<span style="position: absolute;" data-bind="text:clockShowTime, style:{top: (clockSize()/2-fontSize())/2+'px', left: clockSize()/4+'px'}"></span>
+</div>
+<!-- /ko -->

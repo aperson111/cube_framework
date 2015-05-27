@@ -1,0 +1,22 @@
+<div class='row-fluid'>
+	<div class='span12'
+		data-bind="component: { name: 'app_lineloss.head.main', params:{navItems: navItems,currentNavRoute:currentNavRoute} }"></div>
+</div>
+
+<div class="row-fluid">
+	<div class='span3' style='border-right: 1px solid #eeeeee;'
+		data-bind="component: { name: 'app_lineloss.leftinfo.main', params:{clockSize: clockSize,curDate: curDate} }">
+	</div>
+	<div class='span6' data-bind="component: { name: 'app_lineloss.content.'+currentRoute()+'_page'}">
+
+	</div>
+	
+	<div class='span3' >
+		<div class="page-header">
+  			<h1>测试<small>页面样式</small></h1>
+		</div>
+		时钟大小：<input type='text' data-bind="value: clockSize"/> <br />
+		当前日期：<input type='text' readonly='true' data-bind="value: curDate().getFullYear()+'-'+(curDate().getMonth()+1)+'-'+curDate().getDate()" />
+		<input type='button' value="设置为今天" data-bind="click:setDateToToday" style='float:right'/>
+	</div>
+</div>
