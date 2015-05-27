@@ -1,49 +1,19 @@
-<!-- ko foreach: statisticTabContents-->
-<!-- 
-<script type="text/html" data-bind="attr:{id: route}">
- -->
- <!-- 
-<div>
-   注意：虽然用了foreach，但是在scripte内部的上下文，是在tabCtainer组件内
-	<p data-bind="text: $data.actTabContent().text"></p><br/>
-	<div style='position: relative;'>
-		<grid params="columnOptions: $parent.gridColumnOptions,
-				  columnDatas:$parent.gridColumnDatas,
-				  selectItem: $parent.selectGridItem"></grid>
-	</div>
-	当前：<b data-bind="text: $parent.selectGridItem()==null?'':$parent.selectGridItem().values[0].value"></b>，
-	售电量：<span data-bind="text: $parent.selectGridItem()==null?'':$parent.selectGridItem().values[1].value"></span>，
-	售电收益：<span data-bind="text: $parent.selectGridItem()==null?'':$parent.selectGridItem().values[2].value"></span>
-</div>
- -->
-<!-- </script> -->
-<!-- /ko -->
-
-
 <script type="text/html" id="province_statistic">
 <div>
 	<p data-bind="text: $data.actTabContent().text"></p><br/>
-	<div style='position: relative;'>
-		<grid params="columnOptions: $parent.gridColumnOptions,
-				  columnDatas:$parent.gridColumnDatas,
-				  selectItem: $parent.selectGridItem"></grid>
-	</div>
-	当前：<b data-bind="text: $parent.selectGridItem()==null?'':$parent.selectGridItem().values[0].value"></b>，
-	售电量：<span data-bind="text: $parent.selectGridItem()==null?'':$parent.selectGridItem().values[1].value"></span>，
-	售电收益：<span data-bind="text: $parent.selectGridItem()==null?'':$parent.selectGridItem().values[2].value"></span>
 </div>
 </script>
 
 <script type="text/html" id="city_statistic">
 <div>
-	<p>市级统计内容.</p>
+	<p data-bind="text: $data.actTabContent().text"></p><br/>
 		
-			<dropdownlist params="items: $parent.dropdownlistItems,
+			<cube_dropdownlist params="items: $parent.dropdownlistItems,
 								 selectValue: $parent.selectDropdownlistValue">
-			</dropdownlist>
+			</cube_dropdownlist>
 			<p data-bind="text: $parent.selectDropdownlistValue"></p>
 </div>
 </script>
 
 
-<tabcontainer params="tabContents: statisticTabContents, actTabContent: statisticActTabContent"></tabcontainer>
+<cube_tabcontainer params="tabContents: statisticTabContents, actTabContent: statisticActTabContent"></cube_tabcontainer>

@@ -7,7 +7,7 @@ define(['text', 'webpage'], function(text,WebPage) {
 
 	
 	var webp = new WebPage({
-		components: ["tabcontainer","tree","dropdownlist","grid"],
+		components: ["cube_tabcontainer","cube_dropdownlist"],
 		vvms: ["app_lineloss.content.home_page",/*首页*/
 		       "app_lineloss.content.linelossmenu_page",/*线损菜单*/
 		       "app_lineloss.content.salestatistic_page",/*统计售电*/

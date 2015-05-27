@@ -6,7 +6,7 @@
 define(['text','webpage'], function(text,WebPage) {
 
 	var webp = new WebPage({
-		components: ["navbar"],
+		components: ["cube_navbar"],
 		vvms: ["app_lineloss.head.main"]
 	});
 	

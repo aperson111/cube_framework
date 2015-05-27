@@ -6,7 +6,7 @@
 define(['text', 'webpage'], function(text,WebPage) {
 
 	var webp = new WebPage({
-		components: ["calendar","clock"],
+		components: ["cube_clock"],
 		vvms: ["app_lineloss.leftinfo.main"]
 	});
     

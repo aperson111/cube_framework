@@ -45,10 +45,6 @@ var require = {
 
 
 document.write("<link rel='stylesheet' href="+rootPath+"/framework/resources/css/bootstrap2.3.2.css"+ ">");
-//document.write("<link rel='stylesheet' href="+rootPath+"/framework/resources/css/bootstrap-ie6.css"+ ">");
-//document.write("<link rel='stylesheet' href="+rootPath+"/framework/resources/css/ie.css"+ ">");
-document.write("<link rel='stylesheet' href="+rootPath+"/framework/resources/css/jqx.base.css"+ " media='screen'>");
-document.write("<link rel='stylesheet' href="+rootPath+"/framework/resources/css/jqx.arctic.css"+ " media='screen'>");
 
 document.write("<link rel='stylesheet' href="+rootPath+"/framework/resources/css/cube.css"+ ">");
 
@@ -81,6 +77,7 @@ if (!Array.prototype.indexOf)
 }
 
 //注册模板
+//IE下，必须将模板先写入到页面中，否则无法显示。
 document.write('<script id="treeTmpl" type="text/html"> \
 	<li class="jqx-tree-item-li jqx-tree-item-li-arctic jqx-disableselect jqx-disableselect-arctic" \
         style="margin-left: 0px; float: none;"> \
@@ -112,7 +109,7 @@ CUBE = function()
 {
 	var self = this;
 	//全局数组
-	self.componentsLibs = ["navbar","calendar", "tabcontainer","clock","tree","grid","dropdownlist"];
+	self.componentsLibs = ["cube_navbar","cube_tabcontainer","cube_clock","cube_dropdownlist"];
 	self.importedComponents = [];
 	self.loadedPagePartVVM = [];
 	self.loadedPagePart = [];//保留
