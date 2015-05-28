@@ -15,5 +15,8 @@ define(['./webpage'], function() {
 	
 	var pvm = new PageViewModel();
 	
-	cube.startWebPage(pvm);//ko.applyBinding()
+	//并没能解决ie下模板加载的问题。仍然需要将模板写在最外层。
+	$(document).ready(function(){
+		cube.startWebPage(pvm);
+	});
 });

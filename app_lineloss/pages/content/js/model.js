@@ -11,5 +11,8 @@ define(['./webpage'], function() {
 	
 	var pvm = new PageViewModel();
 	
-	cube.startWebPage(pvm);
+	$(document).ready(function(){
+		cube.startWebPage(pvm);
+	});
+	
 });

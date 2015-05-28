@@ -1,19 +1,1 @@
-<script type="text/html" id="province_statistic">
-<div>
-	<p data-bind="text: $data.actTabContent().text"></p><br/>
-</div>
-</script>
-
-<script type="text/html" id="city_statistic">
-<div>
-	<p data-bind="text: $data.actTabContent().text"></p><br/>
-		
-			<cube_dropdownlist params="items: $parent.dropdownlistItems,
-								 selectValue: $parent.selectDropdownlistValue">
-			</cube_dropdownlist>
-			<p data-bind="text: $parent.selectDropdownlistValue"></p>
-</div>
-</script>
-
-
 <cube_tabcontainer params="tabContents: statisticTabContents, actTabContent: statisticActTabContent"></cube_tabcontainer>

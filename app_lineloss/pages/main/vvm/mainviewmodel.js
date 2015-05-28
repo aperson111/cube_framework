@@ -18,11 +18,7 @@ define(['sammy'], function(sammy) {
 		self.navItems = cube.arr([ {
 			text : '首页',
 			route : '#home',
-			hasChildren : false,
-			children : [],
-			isActive : cube.obj(),
-			bottomUp : cube.obj(false),
-			isOpen : cube.obj(false)
+			hasChildren : false
 		}, {
 			text : '线损菜单',
 			route : '#linelossmenu',
@@ -40,58 +36,62 @@ define(['sammy'], function(sammy) {
 				   text : '县级统计',
 				   route : '#linelossmenu/county'
 			   }
-			],
-			isActive : cube.obj(),
-			bottomUp : cube.obj(false),
-			isOpen : cube.obj(false)
+			]
 		}, {
 			text : '统计售电',
 			route : '#salestatistic',
-			hasChildren : false,
-			children : [],
-			isActive : cube.obj(),
-			bottomUp : cube.obj(false),
-			isOpen : cube.obj(false)
+			hasChildren : false
 		}, {
 			text : '降损措施上报',
 			route : '#actionupload',
-			hasChildren : false,
-			children : [],
-			isActive : cube.obj(),
-			bottomUp : cube.obj(false),
-			isOpen : cube.obj(false)
+			hasChildren : false
 		}]);
 
-		$.each(self.navItems(), function() {
-			this.doOpen = function() {
-				if (this.hasChildren)
-					this.isOpen(true);
-				this.isActive(true);
-			}
-			this.doClose = function() {
-				if (this.hasChildren)
-					this.isOpen(false);
-				this.isActive(false);
-			}
-		});
-
-		self.currentNavRoute  =  cube.obj(self.navItems()[0]);
-		self.currentRoute = cube.obj(self.currentNavRoute().route.substr(1));
+		self.currentNavItem  =  cube.obj(self.navItems()[0]);
 		
-		var sammyapp = $.sammy(function() {
-        
-        this.notFound = function(verb, path) {
-        	self.currentRoute(self.navItems()[0].route.substr(1));
-        };
-        
-        this.get('#:view',function() {
-        	self.currentRoute(this.params.view);
-        });
-        
-    });
-
-    sammyapp.run();
-			
+		self.currentRoute = cube.comp(function(){
+			return self.currentNavItem().route.substr(1);
+		},self);
+		
+		//设置导航样式
+		self.isShowNavDividerVertical = cube.obj(false);
+		
+		self.modifyNavRootItem = function(e) {
+			alert("Navbar事件：当前选中为: "+e.text);
+		}
+		
+		//测试内容：外部设置导航菜单项
+		self.navItemOptions = cube.arr([
+		                                {value:"#home",text:"首页"},
+		                                {value:"#linelossmenu",text:"线损菜单"},
+		                                {value:"#salestatistic",text:"统计售电"},
+		                                {value:"#actionupload",text:"降损措施上报"}]);
+		
+		//修改事件
+		self.modifyNavItem = function(e) {
+			alert("Dropdownlist事件：当前选中为: "+e.text);
+		}
+		
+		
+		self.selectedNavDropdownItem = cube.compWritable({
+			read: function(){
+				var sel = null;
+				$.each(self.navItemOptions(), function() {
+					if(this.value == self.currentNavItem().route){
+						sel= this;
+					}
+				});
+				return sel;
+			},
+			write: function(value){
+				$.each(self.navItems(),function() {
+					if(this.route == value.value){
+						self.currentNavItem(this);
+						return;
+					}
+				});
+			},
+			owner: self});
 	};
 	
 	return PageViewModel;
