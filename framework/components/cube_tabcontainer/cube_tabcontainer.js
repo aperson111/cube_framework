@@ -1,14 +1,74 @@
 define([], function() {
 
+	/**
+	 * params: 组件的视图模型设置参数
+	 	tabContents: cube.arr()类型，tab容器的tab项数组			必须。
+	 	selectedTabRoute: 当前选中项的路由，默认为第一个值。	可选。注意：如果外部希望得到该值，则该参数为必须。
+	 	selectedChanged: 选中内容变化处理事件。				可选。
+	 	disabled:		设置tab是否可用
+	 */
  	function tabContainerViewModel(params) {
 		var self = this;
 		
-		self.tabContents = params.tabContents;
-		self.actTabContent = params.actTabContent;
+		//***********************************************************
+		//开始初始化视图模型数据**************************************
+		//***********************************************************	
 		
-		self.showTabContent = function(item) {
-			self.actTabContent(item);
+		//外部的tab项
+		if(typeof params.tabContents == "object") {
+			self.tabContents = cube.arr(params.tabContents);
+		} else if(typeof params.tabContents == "function") {
+			self.tabContents = params.tabContents;
 		}
+		else {
+			self.tabContents = cube.arr([]);
+		}
+		
+		//选中tab项的路由
+		self.selectedTabRoute = params.selectedTabRoute != null ? params.selectedTabRoute : 
+			cube.obj(self.tabContents[0].route);
+		
+		//内部视图模型属性，通过selectedchanged传递。在tabContent的模板中，可以调用该项。但是外部不允许调用和改变。
+		self.selectedTab = cube.comp(function(){
+			var sel = null;
+			$.each(self.tabContents(),function(){
+				if(self.selectedTabRoute() == this.route) {
+					sel= this;
+					return;
+				}
+			});
+			return sel;
+		},self);
+		
+		self.selectedChanged = params.selectedChanged!= null? params.selectedChanged : null;
+		//***********************************************************
+		//结束初始化视图模型数据**************************************
+		//***********************************************************	
+		
+		//***********************************************************
+		//开始事件处理************************************************
+		//***********************************************************
+		//切换选中tab的内容（根据route切换）
+		self.showTabContent = function(item) {
+			self.selectedTab(item);
+			self.selectedTabRoute(item.route);
+		}
+		//***********************************************************
+		//结束事件处理************************************************
+		//***********************************************************
+		
+		
+		//***********************************************************
+		//开始外部事件处理********************************************
+		//***********************************************************
+		self.selectedTabRoute.subscribe(function(newValue) {
+			if(self.selectedChanged!=null) {
+				self.selectedChanged(this);
+			}
+		});
+		//***********************************************************
+		//结束外部事件处理********************************************
+		//***********************************************************
 	}
 	return tabContainerViewModel;
 });

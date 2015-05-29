@@ -3,15 +3,15 @@
 				event:{mouseover: doOpenDropdownOptions,mouseout: doCloseDropdownOptions}" >
 
 	<!-- ko ifnot:isSplit -->
-		<button class="btn dropdown-toggle" data-toggle="dropdown">
+		<button class="btn dropdown-toggle" data-toggle="dropdown" data-bind="attr:{disabled: disabled}">
 			<!-- ko text: selectedItem().text--><!-- /ko -->
 			<span class="caret"></span>
 		</button>
 	<!-- /ko -->
 	
 	<!-- ko if: isSplit-->
-		<button class="btn" data-bind="text:selectedItem().text"></button>
-		<button class="btn dropdown-toggle" data-toggle="dropdown">
+		<button class="btn" data-bind="text:selectedItem().text" data-bind="attr:{disabled: disabled}></button>
+		<button class="btn dropdown-toggle" data-toggle="dropdown" data-bind="attr:{disabled: disabled}>
     		<span class="caret"></span>
   		</button>
   	<!-- /ko -->

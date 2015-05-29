@@ -20,13 +20,13 @@
 <!-- tabcontainer的内容对应的模板，在ie下，必须放在最外层的页面中，否则在ie下，模板内容为空。 -->
 	<script type="text/html" id="province_statistic">
 		<div>
-			<p data-bind="text: $data.actTabContent().text"></p><br/>
+			<p data-bind="text: $data.selectedTab().text"></p><br/>
 		</div>
 	</script>
 
 	<script type="text/html" id="city_statistic">
 		<div>
-			<p data-bind="text: $data.actTabContent().text"></p><br/>
+			<p data-bind="text: $data.selectedTab().text"></p><br/>
 		
 			<cube_dropdownlist params="items: $parent.dropdownlistItems,
 								 selectValue: $parent.selectDropdownlistValue">

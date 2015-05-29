@@ -3,7 +3,7 @@
  * 功能2：使用require注册公用的模块
  */
 
-var DEBUG_MODE = true;
+var DEBUG_MODE = false;
 
 //路径获取
 var scripts = document.getElementsByTagName("script");

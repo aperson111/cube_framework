@@ -26,15 +26,15 @@ define(['sammy'], function(sammy) {
 			children : [
 			   {
 				   text : '省级统计',
-				   route : '#linelossmenu/province'
+				   route : '#linelossmenu/province_statistic'
 			   },
 			   {
 				   text : '市级统计',
-				   route : '#linelossmenu/city'
+				   route : '#linelossmenu/city_statistic'
 			   },
 			   {
 				   text : '县级统计',
-				   route : '#linelossmenu/county'
+				   route : '#linelossmenu/county_statistic'
 			   }
 			]
 		}, {
@@ -46,18 +46,28 @@ define(['sammy'], function(sammy) {
 			route : '#actionupload',
 			hasChildren : false
 		}]);
-
-		self.currentNavItem  =  cube.obj(self.navItems()[0]);
 		
-		self.currentRoute = cube.comp(function(){
-			return self.currentNavItem().route.substr(1);
-		},self);
+		self.currentNavRoute = cube.obj(self.navItems()[0].route);
 		
 		//设置导航样式
 		self.isShowNavDividerVertical = cube.obj(false);
 		
+		self.firstRoute = cube.obj(self.currentNavRoute());
+		self.secondTabRoute = cube.obj();
+		
 		self.modifyNavRootItem = function(e) {
-			alert("Navbar事件：当前选中为: "+e.text);
+			if(DEBUG_MODE)
+				alert("Navbar事件：当前选中为: "+e.text);
+			self.firstRoute(e.route.split('/')[0]);
+			
+			if(self.currentNavRoute().indexOf('#linelossmenu')>-1)
+			{
+				if(e.route.split('/').length==1) {
+					self.secondTabRoute('province_statistic');
+				}else if(e.route.split('/').length==2) {
+					self.secondTabRoute(e.route.split('/')[1]);
+				}
+			}
 		}
 		
 		//测试内容：外部设置导航菜单项
@@ -68,30 +78,14 @@ define(['sammy'], function(sammy) {
 		                                {value:"#actionupload",text:"降损措施上报"}]);
 		
 		//修改事件
-		self.modifyNavItem = function(e) {
-			alert("Dropdownlist事件：当前选中为: "+e.text);
+		self.modifyNavDropdownItem = function(e) {
+			if(DEBUG_MODE)
+				alert("Dropdownlist事件：当前选中为: "+e.text);
+			self.currentNavRoute(e.value);
 		}
 		
-		
-		self.selectedNavDropdownItem = cube.compWritable({
-			read: function(){
-				var sel = null;
-				$.each(self.navItemOptions(), function() {
-					if(this.value == self.currentNavItem().route){
-						sel= this;
-					}
-				});
-				return sel;
-			},
-			write: function(value){
-				$.each(self.navItems(),function() {
-					if(this.route == value.value){
-						self.currentNavItem(this);
-						return;
-					}
-				});
-			},
-			owner: self});
+		//测试内容：导航条交互下拉框选中值
+		//self.currentNavRoute = cube.obj(self.navItemOptions()[0].value);
 	};
 	
 	return PageViewModel;
