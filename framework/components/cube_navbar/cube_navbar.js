@@ -30,10 +30,24 @@
 		self.selectedRoute = params.selectedRoute != null ? params.selectedRoute : cube.obj(self.items()[0].route);
 		
 		//内部视图模型属性，当前选中项
+		//然后由于navbar有多层，通过compute方法，然后遍历获取，会影响效率。
+		//但是如果把selectedItem作为外部的属性，在外部通过route来定位选中的bar，还是需要索引，所以不如在这里完成。
 		self.selectedItem = cube.comp(function(){
 			var sel = null;
 			$.each(self.items(),function(){
-				if(self.selectedRoute() == this.route) {
+				if(this.hasChildren==true) {
+					$.each(this.children,function(){
+						if(self.selectedRoute() == this.route) {
+							sel= this;
+							return;
+						}
+					});
+				}
+				if(sel != null) {
+					return sel;
+				}
+					
+				if(sel == null &&  self.selectedRoute() == this.route) {
 					sel= this;
 					return;
 				}
@@ -53,8 +67,7 @@
 		//开始事件处理************************************************
 		//***********************************************************
 		//设置选中导航项
-		self.setSelectItem = function() {
-			self.selectedItem(this);
+		self.setSelectRoute = function() {
 			self.selectedRoute(this.route);
 		}
 		//如果有子菜单，显示子菜单
@@ -74,7 +87,6 @@
 		//***********************************************************
 		//调用外部的selectedChange事件
 		self.selectedRoute.subscribe(function(newValue) {
-			
 			if(self.selectedChanged!=null) {
 				self.selectedChanged(self.selectedItem());
 			}

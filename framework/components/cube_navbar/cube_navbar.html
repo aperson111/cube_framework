@@ -4,12 +4,12 @@
 			
 		<ul class="nav"	data-bind="foreach: items" >
 			<li data-bind="	event:{mouseover:$parent.openSubItems,mouseout:$parent.closeSubItems},
-							css:{'active': $parent.selectedItem().route==route, 
+							css:{'active': $parent.selectedRoute()==route, 
 								'dropdown': hasChildren, 
 								'open': hasChildren && ($parent.hoverItem()!=null) && ($parent.hoverItem().route==route)}">
 				<a href='#' data-bind="css:{'dropdown-toggle': hasChildren},
 						attr:{href: route,'data-toggle': hasChildren?'dropdown':''},
-						click:$parent.setSelectItem">
+						click:$parent.setSelectRoute">
 					<span data-bind="text: text"></span>
 					<b class="caret bottom-up" data-bind="visible: hasChildren"></b>
 				</a>
@@ -19,7 +19,7 @@
 				<ul class="dropdown-menu dropdown" style="margin-top: -1px;"
 					data-bind="foreach: children">
 					<li>
-						<a data-bind="text: text, attr:{href: route},click:$parents[1].setSelectItem"></a>
+						<a data-bind="text: text, attr:{href: route},click:$parents[1].setSelectRoute"></a>
 					</li>
 				</ul>
 				<!-- /ko -->

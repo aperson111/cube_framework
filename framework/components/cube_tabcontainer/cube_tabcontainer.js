@@ -50,7 +50,6 @@ define([], function() {
 		//***********************************************************
 		//切换选中tab的内容（根据route切换）
 		self.showTabContent = function(item) {
-			self.selectedTab(item);
 			self.selectedTabRoute(item.route);
 		}
 		//***********************************************************
@@ -63,7 +62,7 @@ define([], function() {
 		//***********************************************************
 		self.selectedTabRoute.subscribe(function(newValue) {
 			if(self.selectedChanged!=null) {
-				self.selectedChanged(this);
+				self.selectedChanged(self.selectedTab());
 			}
 		});
 		//***********************************************************
