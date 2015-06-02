@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>cube框架测试</title>
+
+		
+        <script src="../../../framework/scripts/framework.js" type="text/javascript" charset="utf-8"></script>
+      
+      	<link rel="stylesheet" href="../../resources/css/cube_demo.css">
+        <script data-main='app_cubedemo/pages/main/js/model.js' src='../../../framework/scripts/libs/require.js'></script>
+
+    </head>
+    <body>
+    
+    <!-- 
+         webpage(component)规则：三个字符串APP.P.A，用‘.’分割，说明是app<APP>的 pages<P>的Avvm                 
+    -->
+    <div data-bind="component: { name: 'app_cubedemo.main.main',
+    		params: {windowHeight: windowHeight, footHeight: footHeight} }"></div>
+    </body>
+</html>

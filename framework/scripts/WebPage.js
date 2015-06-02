@@ -14,7 +14,7 @@ define([], function() {
 				cube.importComponent(this.toString());
 			});
 			$.each(self.vvms,function(){
-				cube.loadSubWebPartVVM(this.toString());
+				cube.loadSubWebPageVVM(this.toString());
 			});
 		};
 		

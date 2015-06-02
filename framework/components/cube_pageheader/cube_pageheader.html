@@ -1,0 +1,37 @@
+<div class="page-header">
+	<!-- ko if:titleSize()=='h1' -->
+		<h1>
+			<!-- ko text: title--><!-- /ko -->
+			<!-- ko if:isSubtitleWrap--><br /><!--/ko-->
+			<small data-bind="text: subTitle"></small>
+		</h1>
+	<!-- /ko -->
+	<!-- ko if:titleSize()=='h2' -->
+		<h2>
+			<!-- ko text: title--><!-- /ko -->
+			<!-- ko if:isSubtitleWrap--><br /><!--/ko-->
+			<small data-bind="text: subTitle"></small>
+		</h2>
+	<!-- /ko -->
+	<!-- ko if:titleSize()=='h3' -->
+		<h3>
+			<!-- ko text: title--><!-- /ko -->
+			<!-- ko if:isSubtitleWrap--><br /><!--/ko-->
+			<small data-bind="text: subTitle"></small>
+		</h3>
+	<!-- /ko -->
+	<!-- ko if:titleSize()=='h4' -->
+		<h4>
+			<!-- ko text: title--><!-- /ko -->
+			<!-- ko if:isSubtitleWrap--><br /><!--/ko-->
+			<small data-bind="text: subTitle"></small>
+		</h4>
+	<!-- /ko -->
+	<!-- ko if:titleSize()=='h5' -->
+		<h5>
+			<!-- ko text: title--><!-- /ko -->
+			<!-- ko if:isSubtitleWrap--><br /><!--/ko-->
+			<small data-bind="text: subTitle"></small>
+		</h5>
+	<!-- /ko -->
+</div>

@@ -1,0 +1,93 @@
+<div class="accordion">
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" href="#"
+				data-bind="click: setShowPanel('appearance')">外观(appearance)设置</a>
+		</div>
+		<div class="accordion-body collapse" style="height: auto;"
+			data-bind="style:{height: isShowPanelAppearance()?'auto':0}">
+			<div class="accordion-inner">
+				<div data-bind="if: propertiesItems().appearance.length==0">无</div>
+				<div data-bind="foreach: propertiesItems().appearance">
+					<span data-bind="text: name"></span>
+					<!-- ko if:	editType=='txt'-->
+						<input type="text" data-bind="value: value, attr:{readonly: readonly}" />
+					<!-- /ko -->
+					<!-- ko if:	editType=='chkbox'-->
+						<input type="checkbox" data-bind="checked: value, attr:{readonly: readonly}" />
+					<!-- /ko -->
+					<br />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" href="#"
+				data-bind="click: setShowPanel('option')">选项(option)设置</a>
+		</div>
+		<div class="accordion-body collapse" style="height: auto;"
+			data-bind="style:{height: isShowPanelOption()?'auto':0}">
+			<div class="accordion-inner">
+				<div data-bind="if: propertiesItems().option.length==0">无</div>
+				<div  data-bind="foreach: propertiesItems().option">
+					<span data-bind="text: name"></span>
+					<!-- ko if:	editType=='txt'-->
+						<input type="text" data-bind="value: value, attr:{readonly: readonly}" />
+					<!-- /ko -->
+					<!-- ko if:	editType=='chkbox'-->
+						<input type="checkbox" data-bind="checked: value, attr:{readonly: readonly}" />
+					<!-- /ko -->
+					<br />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" href="#"
+				data-bind="click: setShowPanel('data')">数据(data)设置</a>
+		</div>
+		<div class="accordion-body collapse" style="height: auto;"
+			data-bind="style:{height: isShowPanelData()?'auto':0}">
+			<div class="accordion-inner" >
+				<div data-bind="if: propertiesItems().data.length==0">无</div>
+				<div data-bind="foreach: propertiesItems().data">
+					<span data-bind="text: name"></span>
+					<!-- ko if:	editType=='txt'-->
+						<input type="text" data-bind="value: value, attr:{readonly: readonly}" />
+					<!-- /ko -->
+					<!-- ko if:	editType=='chkbox'-->
+						<input type="checkbox" data-bind="checked: value, attr:{readonly: readonly}" />
+					<!-- /ko -->
+					<!-- ko if:	editType=='area'-->
+						<input type="textarea" data-bind="value: value, attr:{readonly: readonly}" />
+					<!-- /ko -->
+					<br />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" href="#"
+				data-bind="click: setShowPanel('event')">事件(event)设置</a>
+		</div>
+		<div class="accordion-body collapse" style="height: auto;"
+			data-bind="style:{height: isShowPanelEvent()?'auto':0}">
+			<div class="accordion-inner">
+				<div data-bind="if: propertiesItems().event.length==0">无</div>
+				<div data-bind="foreach: propertiesItems().event">
+					<span data-bind="text: name"></span>
+					<!-- ko if:	editType=='txt'-->
+						<input type="text" data-bind="value: value, attr:{readonly: readonly}" />
+					<!-- /ko -->
+					<!-- ko if:	editType=='chkbox'-->
+						<input type="checkbox" data-bind="checked: value, attr:{readonly: readonly}" />
+					<!-- /ko -->
+					<br />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

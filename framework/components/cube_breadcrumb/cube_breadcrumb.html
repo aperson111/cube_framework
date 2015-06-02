@@ -1,0 +1,12 @@
+<ul class="breadcrumb" data-bind="foreach: items">
+  <li data-bind="css:{'active': route==$parent.selectedRoute()}">
+  <!-- ko ifnot:route==$parent.selectedRoute() -->
+  	<a href="#" data-bind="text: text,click: $parent.setSelectRoute"></a>
+	<span class="divider" data-bind="text: $parent.splitTxt">
+  	</span>
+  <!-- /ko -->
+  <!-- ko if:route==$parent.selectedRoute()-->
+  	<!-- ko text: text --><!-- /ko -->
+  <!-- /ko -->
+  </li>
+</ul>

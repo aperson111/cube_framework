@@ -1,6 +1,7 @@
 define([], function() {
 
 	/**
+	 * 标签容器
 	 * params: 组件的视图模型设置参数
 	 	tabContents: cube.arr()类型，tab容器的tab项数组			必须。
 	 	selectedTabRoute: 当前选中项的路由，默认为第一个值。	可选。注意：如果外部希望得到该值，则该参数为必须。
@@ -15,18 +16,11 @@ define([], function() {
 		//***********************************************************	
 		
 		//外部的tab项
-		if(typeof params.tabContents == "object") {
-			self.tabContents = cube.arr(params.tabContents);
-		} else if(typeof params.tabContents == "function") {
-			self.tabContents = params.tabContents;
-		}
-		else {
-			self.tabContents = cube.arr([]);
-		}
+		self.tabContents = cube.initComponentProperty(params.tabContents, [], 'arr');
 		
 		//选中tab项的路由
-		self.selectedTabRoute = params.selectedTabRoute != null ? params.selectedTabRoute : 
-			cube.obj(self.tabContents[0].route);
+		self.selectedTabRoute = cube.initComponentProperty(params.selectedTabRoute, 
+				self.tabContents()[0].route, 'obj');
 		
 		//内部视图模型属性，通过selectedchanged传递。在tabContent的模板中，可以调用该项。但是外部不允许调用和改变。
 		self.selectedTab = cube.comp(function(){

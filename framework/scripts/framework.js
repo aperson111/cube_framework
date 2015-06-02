@@ -109,7 +109,14 @@ CUBE = function()
 {
 	var self = this;
 	//全局数组
-	self.componentsLibs = ["cube_navbar","cube_tabcontainer","cube_clock","cube_dropdownlist"];
+	self.componentsLibs = ["cube_navbar","cube_breadcrumb",
+	                       "cube_tabcontainer",
+	                       "cube_clock",
+	                       "cube_dropdownlist",
+	                       "cube_calendar",
+	                       "cube_progressbar",
+	                       "cube_modaldialog",
+	                       "cube_pageheader"];
 	self.importedComponents = [];
 	self.loadedPagePartVVM = [];
 	self.loadedPagePart = [];//保留
@@ -161,8 +168,8 @@ CUBE = function()
 		}
 	};
 	
-	//注册webpart内的vvm
-	self.loadSubWebPartVVM = function(p_vvm) {
+	//注册webpage内的vvm
+	self.loadSubWebPageVVM = function(p_vvm) {
 		if(DEBUG_MODE  && typeof(console) != "undefined" && typeof(console.log) != "undefined")
 			console.log("加载vvm："+p_vvm);
 		if(p_vvm == null) {
@@ -186,8 +193,39 @@ CUBE = function()
 			}
 		} else {
 			if(DEBUG_MODE  && typeof(console) != "undefined" && typeof(console.log) != "undefined")
-				console.log("webpart vvm: "+p_vvm+"已经注册。");
+				console.log("webpage vvm: "+p_vvm+"已经注册。");
 		}
+	};
+	
+	//初始化组件的视图模型属性。由于外部传入的内容有可能为不可变/可变/未传入等情况，在组件内部统一处理为observable属性。
+	/**
+	 * param: 组件viewmode的params参数对应的某一个属性
+	 * initVal：如果组件没有传入参数，希望设置的初始值
+	 * type：包括obj和arr两种
+	 */
+	self.initComponentProperty = function(param, initVal, type) {
+		if(type == null)
+			type = 'obj';
+		if(type == 'obj') {
+			if(typeof param == "function") {
+				return param;
+			} else if(param != null) {
+				return cube.obj(param);
+			}
+			else {
+				return cube.obj(initVal);
+			}
+		} else if(type == 'arr') {
+			if(typeof param == "function") {
+				return param;
+			} else if(param != null) {
+				return cube.arr(param);
+			}
+			else {
+				return cube.arr(initVal);
+			}
+		}
+		return null;
 	};
 	
 	//判断浏览器是否支持html5
@@ -197,6 +235,6 @@ CUBE = function()
         } else {
             return false;
         }
-	}
+	};
 };
 cube = new CUBE();

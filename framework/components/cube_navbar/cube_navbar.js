@@ -1,13 +1,16 @@
 ﻿define([], function() {
 
 	/**
+	 * 导航条
 	 * params: 组件的视图模型设置参数
 	 	navTitle:   			导航的标题，在导航条最左侧显示。			可选。
 	 	items: 					导航条内容。								必须。
 	 	isSplit:				下拉框是否为分裂模式，默认为非分裂模式。	可选。
-	 	selectedRoute:				当前选中的导航条。						可选。注意：如果外部希望得到该值，则该参数为必须。	
+	 	selectedRoute:				当前选中的导航条。					可选。注意：如果外部希望得到该值，则该参数为必须。	
 	 	isShowDividerVertical:	是否显示导航条分隔符。					可选。	
 	 	selectedChanged:		选中变更事件
+	 	isFixTop:				是否上方悬浮								可选，默认不悬浮
+	 	isInverse:				是否反向显示								可选。默认不反向。
 	 */
  	function navbarViewModel(params) {
 		var self = this;
@@ -17,21 +20,27 @@
 		//***********************************************************	
 		
 		//导航标题。默认为空
-		self.navTitle = params.navTitle != null ? params.navTitle : cube.obj("");
+		self.navTitle = cube.initComponentProperty(params.data.navTitle.value,"", 'obj');
 		
 		//导航条内容
-		self.items = params.items;
+		self.items = cube.initComponentProperty(params.data.items.value, [], 'arr');//params.items;
 		
 		//是否显示导航条分隔符，默认显示
-		self.isShowDividerVertical = params.isShowDividerVertical != null ?
-			params.isShowDividerVertical : cube.obj();
+		self.isShowDividerVertical = cube.initComponentProperty(params.option.isShowDividerVertical.value, false, 'obj');
 		
 		//选中路由
-		self.selectedRoute = params.selectedRoute != null ? params.selectedRoute : cube.obj(self.items()[0].route);
+		self.selectedRoute = cube.initComponentProperty(params.data.selectedRoute.value, self.items()[0].route, 'obj');
+		
+		//是否在上方悬浮
+		self.isFixTop = cube.initComponentProperty(params.option.isFixTop.value, false, 'obj');
+		
+		//是否反向显示
+		self.isInverse = cube.initComponentProperty(params.option.isInverse.value, false, 'obj');
 		
 		//内部视图模型属性，当前选中项
 		//然后由于navbar有多层，通过compute方法，然后遍历获取，会影响效率。
 		//但是如果把selectedItem作为外部的属性，在外部通过route来定位选中的bar，还是需要索引，所以不如在这里完成。
+		//当selectedroute改变时，knockout的执行顺序为先执行computed，然后执行subscribe。符合要求。
 		self.selectedItem = cube.comp(function(){
 			var sel = null;
 			$.each(self.items(),function(){
@@ -56,8 +65,9 @@
 		},self);
 
 		//选中变化处理事件。
-		self.selectedChanged = params.selectedChanged!= null? params.selectedChanged : null;
-		//鼠标经过菜单项，为hover样式。
+		self.selectedChanged = params.event.selectedChanged.value!= null? params.event.selectedChanged.value : null;
+		
+		//内部视图模型属性。鼠标经过菜单项，为hover样式。
 		self.hoverItem = cube.obj();
 		//***********************************************************
 		//结束初始化视图模型数据**************************************

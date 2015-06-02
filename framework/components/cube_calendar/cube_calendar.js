@@ -1,7 +1,6 @@
 define([], function() {
 
 	/**
-	 * 下拉框组件
 	 * params: 组件的视图模型设置参数
 	 	items:       cube.arr()类型，下拉框的选项。			必须。
 	 	selectedValue: 当前选中项，默认为第一个值。				可选。注意：如果外部希望得到该值，则该参数为必须。

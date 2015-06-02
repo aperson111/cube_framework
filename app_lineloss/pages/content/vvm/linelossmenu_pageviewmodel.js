@@ -21,10 +21,13 @@ define([], function() {
 		//选中tab的路由
 		self.tabRoute = params.tabRoute;
 		
+		self.rootRoute = params.rootRoute;
+		
 		self.modifyTabContent = function(e) {
 			if(DEBUG_MODE)
 				alert("tab页发生变化，当前："+e.text);
 			self.tabRoute(e.route);
+			self.rootRoute("#linelossmenu/"+e.route);
 		};
 		
 		self.dropdownlistValue=cube.obj("bj");

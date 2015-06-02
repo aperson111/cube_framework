@@ -1,0 +1,22 @@
+<!-- ko if: animatShowBck-->
+<div class="modal hide fade" style="display: block;"  data-bind="css:{'in': animatShowDialog},
+	style:{width: width()+'px', height: height()+'px'}">
+	<div class="modal-header">
+		<button type="button" class="close" data-bind="click: closeDialog">×</button>
+		<h3 data-bind="text: title"></h3>
+	</div>
+	<div class="modal-body" data-bind="html:content,style:{height: (height()-50-60)+'px'}">
+	</div>
+	<div class="modal-footer">
+		<!-- ko if:isShowCloseBtn -->
+			<button class="btn" data-bind="click: closeDialog">关闭</button>
+		<!-- /ko -->
+		<!-- ko if:isShowConfirmBtn -->
+		<button class="btn btn-primary" data-bind="click: confirmDialog">确定</button>
+		<!-- /ko -->
+	</div>
+</div>
+
+
+<div class="modal-backdrop fade" data-bind="css:{'in': animatShowBck},click: closeDialog"></div>
+<!-- /ko -->

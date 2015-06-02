@@ -47,11 +47,15 @@ define(['sammy'], function(sammy) {
 			hasChildren : false
 		}]);
 		
+		//当前导航路由
 		self.currentNavRoute = cube.obj(self.navItems()[0].route);
 		
 		//设置导航样式
 		self.isShowNavDividerVertical = cube.obj(false);
+		self.isShowNavFixTop = cube.obj(false);
+		self.isNavbarInverse = cube.obj(false);
 		
+		//一级导航和二级导航
 		self.firstRoute = cube.obj(self.currentNavRoute());
 		self.secondTabRoute = cube.obj();
 		
@@ -63,12 +67,37 @@ define(['sammy'], function(sammy) {
 			if(self.currentNavRoute().indexOf('#linelossmenu')>-1)
 			{
 				if(e.route.split('/').length==1) {
-					self.secondTabRoute('province_statistic');
+					self.currentNavRoute("#linelossmenu/province_statistic");
+					self.secondTabRoute("province_statistic");
 				}else if(e.route.split('/').length==2) {
 					self.secondTabRoute(e.route.split('/')[1]);
 				}
 			}
+			//显示模态对话框
+			self.showModalDialog(true);
 		}
+		
+		self.breadcrumbItems = cube.comp(function(){
+			var items = [self.navItems()[0]];
+			if(self.currentNavRoute()=='#home')
+				return items;
+			
+			$.each(self.navItems(),function(){
+				if(self.firstRoute() == this.route) {
+					items.push(this);
+					if(this.hasChildren) {
+						$.each(this.children, function(){
+							if(self.firstRoute()+'/'+self.secondTabRoute() == this.route) {
+								items.push(this);
+								return;
+							}
+						});
+					}
+					return;
+				}
+			});
+			return items;
+		},self);
 		
 		//测试内容：外部设置导航菜单项
 		self.navItemOptions = cube.arr([
@@ -81,11 +110,25 @@ define(['sammy'], function(sammy) {
 		self.modifyNavDropdownItem = function(e) {
 			if(DEBUG_MODE)
 				alert("Dropdownlist事件：当前选中为: "+e.text);
-			self.currentNavRoute(e.value);
+			if(e.value != '#linelossmenu')
+				self.currentNavRoute(e.value);
+			else {
+				if(self.secondTabRoute()==null) {
+					if(self.currentNavRoute()=='#linelossmenu')
+					self.currentNavRoute("#linelossmenu/province_statistic");
+				} else {
+					self.currentNavRoute("#linelossmenu/"+self.secondTabRoute());
+				}
+			}
 		}
 		
 		//测试内容：导航条交互下拉框选中值
 		//self.currentNavRoute = cube.obj(self.navItemOptions()[0].value);
+		
+		//测试进度条
+		self.progressbarValue = cube.obj(0.6);
+		
+		self.showModalDialog = cube.obj(false);
 	};
 	
 	return PageViewModel;

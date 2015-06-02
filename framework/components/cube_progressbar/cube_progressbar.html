@@ -1,0 +1,9 @@
+<div class="progress progress-striped active" data-bind="attr:{title: progressValue}">
+	<div class="bar bar-success"
+		data-bind="style:{width: (progressItems()[0]*100)+'%'}"></div>
+	<div class="bar bar-warning"
+		data-bind="style:{width: (progressItems()[1]*100)+'%'}"></div>
+	<div class="bar bar-danger"
+		data-bind="style:{width: (progressItems()[2]*100)+'%'}"></div>
+	<div class="bar" style="width:0%;color:#000;" data-bind="text: progressValue"></div>
+</div>

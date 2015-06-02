@@ -6,29 +6,50 @@
 <div class='row-fluid'>
 	<cube_navbar params="items: navItems,selectedRoute: currentNavRoute, 
 				isShowDividerVertical: isShowNavDividerVertical,
-				selectedChanged: modifyNavRootItem"></cube_navbar>
+				selectedChanged: modifyNavRootItem,
+				isFixTop: isShowNavFixTop,
+				isInverse: isNavbarInverse"></cube_navbar>
 </div>
 
 
-<div class="row-fluid">
-	<div class='span3' style='border-right: 1px solid #eeeeee;'
-		data-bind="component: { name: 'app_lineloss.leftinfo.main', 
-			params:{clockSize: clockSize,curDate: curDate} }">
-	</div>
-	<div class='span6' data-bind="component: { name: 'app_lineloss.content.'+firstRoute().substr(1)+'_page',
-			params:{tabRoute: secondTabRoute} }">
 
+<div class="row-fluid">
+	<div class='span3'>
+		
+		<div style='border-right: 1px solid #eeeeee;'
+			data-bind="component: { name: 'app_lineloss.leftinfo.main', 
+				params:{clockSize: clockSize,curDate: curDate} }">
+		</div>
 	</div>
-	
+	<div class='span6'>
+		<cube_breadcrumb params="items: breadcrumbItems,selectedRoute: currentNavRoute"></cube_breadcrumb>
+		<div data-bind="component: { name: 'app_lineloss.content.'+firstRoute().substr(1)+'_page',
+			params:{tabRoute: secondTabRoute,rootRoute: currentNavRoute} }">
+
+		</div>
+	</div>
 	<div class='span3' >
 		<div class="page-header">
   			<h1>测试<small>页面样式</small></h1>
 		</div>
 		是否显示导航条分隔符: <input type="checkbox" data-bind="checked: isShowNavDividerVertical" /> <br />
+		导航条是否悬浮上方: <input type="checkbox" data-bind="checked: isShowNavFixTop" /> <br />
+		导航条是否反色显示: <input type="checkbox" data-bind="checked: isNavbarInverse" /> <br />
 		当前选中导航条内容：<cube_dropdownlist params="items: navItemOptions,
 													selectedValue: firstRoute,
 													 selectedChanged: modifyNavDropdownItem,
 													 disabled: false" ></cube_dropdownlist> <br />
 		时钟大小：<input type='text' data-bind="value: clockSize"/> <br />
+		
+		进度条大小：<input type='text' data-bind="value: progressbarValue"/> <br />
+		<cube_progressbar params="progressValue: progressbarValue,
+								warningValue: 0.5,dangerValue:0.7"></cube_progressbar>
 	</div>
 </div>
+
+<cube_modaldialog params="title: '当前选中导航条',
+	content: currentNavRoute,
+	isShowDialog: showModalDialog,
+	isShowConfirmBtn: true,
+	width: 400,
+	height: 300"></cube_modaldialog>
