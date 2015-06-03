@@ -7,6 +7,7 @@
 	 	selectedRoute:				当前选中的导航条。					可选。注意：如果外部希望得到该值，则该参数为必须。	
 	 	selectedChanged:		选中变更事件								可选。
 	 	splitTxt:				分隔符									可选。默认为'/'
+	 	isHrefRoute:            是否设置锚定值
 	 */
  	function breadcrumbViewModel(params) {
 		var self = this;
@@ -23,6 +24,9 @@
 		
 		//分隔符
 		self.splitTxt = cube.initComponentProperty(params.splitTxt, '/', 'obj');
+		
+		//是否设置锚定值
+		self.isHrefRoute = cube.initComponentProperty(params.isHrefRoute, true, 'obj');
 		
 		
 		//选中变化处理事件。
@@ -47,8 +51,25 @@
 		//***********************************************************
 		//调用外部的selectedChange事件
 		self.selectedRoute.subscribe(function(newValue) {
+			//删除节点
+			
+			//获得节点index
+			var isDel=false;
+			var delItems = [];
+			$.each(self.items(),function() {
+				if(newValue== this.route) {
+					isDel = true;
+				}else if(isDel == true){
+					delItems.push(this);
+				}
+			});
+			self.items.removeAll(delItems);
+			
 			if(self.selectedChanged!=null) {
-				self.selectedChanged(self.selectedItem());
+				self.selectedChanged(newValue);
+			}
+			if(self.isHrefRoute()) {
+				window.location.hash = newValue;
 			}
 		});
 		//***********************************************************

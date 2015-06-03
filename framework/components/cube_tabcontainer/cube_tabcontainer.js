@@ -7,6 +7,7 @@ define([], function() {
 	 	selectedTabRoute: 当前选中项的路由，默认为第一个值。	可选。注意：如果外部希望得到该值，则该参数为必须。
 	 	selectedChanged: 选中内容变化处理事件。				可选。
 	 	disabled:		设置tab是否可用
+	 	isHrefRoute:            是否设置锚定值
 	 */
  	function tabContainerViewModel(params) {
 		var self = this;
@@ -21,6 +22,10 @@ define([], function() {
 		//选中tab项的路由
 		self.selectedTabRoute = cube.initComponentProperty(params.selectedTabRoute, 
 				self.tabContents()[0].route, 'obj');
+		
+		//是否设置锚定值
+		self.isHrefRoute = cube.initComponentProperty(params.isHrefRoute, true, 'obj');
+		
 		
 		//内部视图模型属性，通过selectedchanged传递。在tabContent的模板中，可以调用该项。但是外部不允许调用和改变。
 		self.selectedTab = cube.comp(function(){
@@ -57,6 +62,9 @@ define([], function() {
 		self.selectedTabRoute.subscribe(function(newValue) {
 			if(self.selectedChanged!=null) {
 				self.selectedChanged(self.selectedTab());
+			}
+			if(self.isHrefRoute()) {
+				window.location.hash = newValue;
 			}
 		});
 		//***********************************************************

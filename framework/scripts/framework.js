@@ -76,31 +76,31 @@ if (!Array.prototype.indexOf)
   };
 }
 
-//注册模板
-//IE下，必须将模板先写入到页面中，否则无法显示。
-document.write('<script id="treeTmpl" type="text/html"> \
-	<li class="jqx-tree-item-li jqx-tree-item-li-arctic jqx-disableselect jqx-disableselect-arctic" \
-        style="margin-left: 0px; float: none;"> \
-        <!-- ko if:hasChildren--> \
-		<span style="height: 17px; border: none; float: left; clear: both; width: 16px; margin-top: 3px; background-color: transparent;" \
-               data-bind="click: modifyExpand, \
-               css:{\'jqx-tree-item-arrow-collapse jqx-tree-item-arrow-collapse-arctic jqx-icon-arrow-right jqx-icon-arrow-right-arctic\':isExpand()==false, \
-               	\'jqx-tree-item-arrow-expand jqx-tree-item-arrow-expand-arctic jqx-icon-arrow-down jqx-icon-arrow-down-arctic\':isExpand \
-               }"></span> \
-         <!-- /ko --> \
-	<div style="display: inline-block;" class="draggable jqx-rc-all jqx-rc-all-arctic \
-											   jqx-tree-item jqx-tree-item-arctic  \
-											  jqx-item jqx-item-arctic" \
-         data-bind="text:text, css:{\'jqx-tree-item-selected jqx-tree-item-selected-arctic\':isAct, \
-         							\'jqx-tree-item-hover jqx-tree-item-hover-arctic\':isHover}, \
-                    click: actItem,event:{mouseover:showHover,mouseout:hiddenHover}"></div> \
-		<!-- ko if:isExpand--> \
-		<ul class="jqx-tree-dropdown jqx-tree-dropdown-arctic" style="overflow: hidden;" \
-		    data-bind="template: {name: \'treeTmpl\',foreach: children }"> \
-		</ul> \
-		<!-- /ko --> \
-	</li> \
-</script>');
+////注册模板
+////IE下，必须将模板先写入到页面中，否则无法显示。
+//document.write('<script id="treeTmpl" type="text/html"> \
+//	<li class="jqx-tree-item-li jqx-tree-item-li-arctic jqx-disableselect jqx-disableselect-arctic" \
+//        style="margin-left: 0px; float: none;"> \
+//        <!-- ko if:hasChildren--> \
+//		<span style="height: 17px; border: none; float: left; clear: both; width: 16px; margin-top: 3px; background-color: transparent;" \
+//               data-bind="click: modifyExpand, \
+//               css:{\'jqx-tree-item-arrow-collapse jqx-tree-item-arrow-collapse-arctic jqx-icon-arrow-right jqx-icon-arrow-right-arctic\':isExpand()==false, \
+//               	\'jqx-tree-item-arrow-expand jqx-tree-item-arrow-expand-arctic jqx-icon-arrow-down jqx-icon-arrow-down-arctic\':isExpand \
+//               }"></span> \
+//         <!-- /ko --> \
+//	<div style="display: inline-block;" class="draggable jqx-rc-all jqx-rc-all-arctic \
+//											   jqx-tree-item jqx-tree-item-arctic  \
+//											  jqx-item jqx-item-arctic" \
+//         data-bind="text:text, css:{\'jqx-tree-item-selected jqx-tree-item-selected-arctic\':isAct, \
+//         							\'jqx-tree-item-hover jqx-tree-item-hover-arctic\':isHover}, \
+//                    click: actItem,event:{mouseover:showHover,mouseout:hiddenHover}"></div> \
+//		<!-- ko if:isExpand--> \
+//		<ul class="jqx-tree-dropdown jqx-tree-dropdown-arctic" style="overflow: hidden;" \
+//		    data-bind="template: {name: \'treeTmpl\',foreach: children }"> \
+//		</ul> \
+//		<!-- /ko --> \
+//	</li> \
+//</script>');
 
 
 //管理全局内容，对knockout的封装。

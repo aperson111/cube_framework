@@ -8,6 +8,7 @@ define([], function() {
 	 	isSplit:	下拉框是否为分裂模式，默认为非分裂模式。	可选。
 	 	selectedChanged: 选中内容变化处理事件。				可选。
 	 	disabled:		设置下拉按钮是否可用
+	 	isHrefRoute:            是否设置锚定值
 	 */
  	function dropdownlistViewModel(params) {
 		var self = this;
@@ -45,7 +46,10 @@ define([], function() {
 		self.selectedChanged = params.selectedChanged!= null? params.selectedChanged : null;
 		
 		//下拉框是否可用
-		self.disabled = cube.initComponentProperty(params.disabled, false, 'obj');
+		self.disabled = cube.initComponentProperty(params.disabled, true, 'obj');
+		
+		//是否设置锚定值
+		self.isHrefRoute = cube.initComponentProperty(params.isHrefRoute, false, 'obj');
 		//***********************************************************
 		//结束初始化视图模型数据**************************************
 		//***********************************************************
@@ -85,6 +89,10 @@ define([], function() {
 		self.selectedValue.subscribe(function(newValue) {
 			if(self.selectedChanged!=null) {
 				self.selectedChanged(self.selectedItem());
+			}
+			
+			if(self.isHrefRoute()) {
+				window.location.hash = newValue;
 			}
 		});
 		//***********************************************************

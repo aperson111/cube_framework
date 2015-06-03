@@ -2,9 +2,7 @@ define([], function() {
 	
 	var PageViewModel = function(params) {
 		var self = this;
-		
-		
-		
+
 		self.selectedComponent = params.selectedComponent;
 		
 		self.thumbnailRootUrl = '../expandComponents/thumbnails/';
@@ -55,7 +53,7 @@ define([], function() {
  		    				name:	"是否在顶端悬浮",
  		    				editType: 'chkbox', //编辑类型
  		    				value: cube.obj(false),
- 		    				readonly: false
+ 		    				readonly: true
  		    		    },
  		    		    isInverse: {
 		    				name:	"是否反色",
@@ -67,6 +65,12 @@ define([], function() {
 		    				name:	"是否显示分隔符",
 		    				editType: 'chkbox', //编辑类型
 		    				value: cube.obj(false),
+		    				readonly: false
+		    		    },
+		    		    isHrefRoute: {
+		    				name:	"是否设置锚定值",
+		    				editType: 'chkbox', //编辑类型
+		    				value: cube.obj(true),
 		    				readonly: false
 		    		    }
  		    		},
@@ -137,7 +141,13 @@ define([], function() {
  		    				editType: 'txt', //编辑类型
  		    				value: cube.obj('/'),
  		    				readonly: false
- 		    		    }
+ 		    		    },
+ 		    		   isHrefRoute: {
+		    				name:	"是否设置锚定值",
+		    				editType: 'chkbox', //编辑类型
+		    				value: cube.obj(true),
+		    				readonly: false
+		    		    }
  		    		},
  		    		data: {
  		    			items:{
@@ -178,6 +188,12 @@ define([], function() {
  		    		appearance: {
  		    		},
  		    		option: {
+ 		    			isHrefRoute: {
+		    				name:	"是否设置锚定值",
+		    				editType: 'chkbox', //编辑类型
+		    				value: cube.obj(true),
+		    				readonly: false
+		    		    }
  		    		},
  		    		data: {
  		    			tabContents:{
@@ -186,15 +202,15 @@ define([], function() {
  		    				value: cube.arr([
  		    				   {
  		    					   text : '省级统计',
- 		    					   route : 'province_statistic'
+ 		    					   route : '#province_statistic'
  		    				    },
  		    				   {
   		    					   text : '市级统计',
-  		    					   route : 'city_statistic'
+  		    					   route : '#city_statistic'
   		    				    },
  		    				   {
   		    					   text : '县级统计',
-  		    					   route : 'county_statistic'
+  		    					   route : '#county_statistic'
   		    				    }
  		    				]),
  		    				readonly: true
@@ -202,7 +218,7 @@ define([], function() {
  		    			selectedTabRoute:{
  		    				name:	"当前选中页面",
  		    				editType: 'txt',
- 		    				value: cube.obj('province_statistic'),
+ 		    				value: cube.obj('#province_statistic'),
  		    				readonly: true
  		    			}
  		    		},
@@ -227,7 +243,7 @@ define([], function() {
 		    				editType: 'txt', //编辑类型
 		    				value: cube.obj(300),
 		    				readonly: false
-		    		    },
+		    		    }
  		    		},
  		    		option: {
  		    			isShowCloseBtn: {
@@ -286,6 +302,12 @@ define([], function() {
 		    				editType: 'chkbox', //编辑类型
 		    				value: cube.obj(false),
 		    				readonly: false
+		    		    },
+		    		    isHrefRoute: {
+		    				name:	"是否设置锚定值",
+		    				editType: 'chkbox', //编辑类型
+		    				value: cube.obj(true),
+		    				readonly: false
 		    		    }
  		    		},
  		    		data: {
@@ -321,9 +343,15 @@ define([], function() {
  		    		option: {
  		    			titleSize: {
  		    				name:	"标题字体尺寸",
- 		    				editType: 'txt', //编辑类型
+ 		    				editType: 'dropdownlist', //编辑类型
  		    				value: cube.obj('h5'),
- 		    				readonly: true
+ 		    				options: cube.arr([{value:'h1',text:'1号'},
+ 		    				                 {value:'h2',text:'2号'},
+ 		    				                 {value:'h3',text:'3号'},
+ 		    				                 {value:'h4',text:'4号'},
+ 		    				                 {value:'h5',text:'5号'}
+ 		    				                ]),
+ 		    				readonly: false
  		    		    },
  		    		   isSubtitleWrap: {
 		    				name:	"副标题是否换行",
@@ -354,6 +382,7 @@ define([], function() {
 		
 		self.setSelectedComponent = function() {
 			self.selectedComponent(this);
+			window.location.hash = this.value;
 		};
 	};
 	

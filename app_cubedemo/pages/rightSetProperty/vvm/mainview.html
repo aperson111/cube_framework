@@ -11,10 +11,10 @@
 				<div data-bind="foreach: propertiesItems().appearance">
 					<span data-bind="text: name"></span>
 					<!-- ko if:	editType=='txt'-->
-						<input type="text" data-bind="value: value, attr:{readonly: readonly}" />
+						<input type="text" data-bind="textInput: value, attr:{readonly: readonly}" />
 					<!-- /ko -->
 					<!-- ko if:	editType=='chkbox'-->
-						<input type="checkbox" data-bind="checked: value, attr:{readonly: readonly}" />
+						<input type="checkbox" data-bind="checked: value, attr:{disabled: readonly}" />
 					<!-- /ko -->
 					<br />
 				</div>
@@ -26,17 +26,24 @@
 			<a class="accordion-toggle" data-toggle="collapse" href="#"
 				data-bind="click: setShowPanel('option')">选项(option)设置</a>
 		</div>
-		<div class="accordion-body collapse" style="height: auto;"
-			data-bind="style:{height: isShowPanelOption()?'auto':0}">
+		<div class="accordion-body collapse property-collapse" style="height: auto;"
+			data-bind="style:{'height': isShowPanelOption()? 'auto' : 0,
+				'display': isShowPanelOption()? 'block':'none'}">
 			<div class="accordion-inner">
 				<div data-bind="if: propertiesItems().option.length==0">无</div>
 				<div  data-bind="foreach: propertiesItems().option">
 					<span data-bind="text: name"></span>
 					<!-- ko if:	editType=='txt'-->
-						<input type="text" data-bind="value: value, attr:{readonly: readonly}" />
+						<input type="text" data-bind="textInput: value, attr:{readonly: readonly}" />
 					<!-- /ko -->
 					<!-- ko if:	editType=='chkbox'-->
-						<input type="checkbox" data-bind="checked: value, attr:{readonly: readonly}" />
+						<input type="checkbox" data-bind="checked: value, attr:{disabled: readonly}" />
+					<!-- /ko -->
+					<!-- ko if: editType =='dropdownlist' -->
+						<div data-bind="component:{
+							name: 'cube_dropdownlist',
+							params: {selectedValue: value, items: options}
+							}"></div>
 					<!-- /ko -->
 					<br />
 				</div>
@@ -55,10 +62,10 @@
 				<div data-bind="foreach: propertiesItems().data">
 					<span data-bind="text: name"></span>
 					<!-- ko if:	editType=='txt'-->
-						<input type="text" data-bind="value: value, attr:{readonly: readonly}" />
+						<input type="text" data-bind="textInput: value, attr:{readonly: readonly}" />
 					<!-- /ko -->
 					<!-- ko if:	editType=='chkbox'-->
-						<input type="checkbox" data-bind="checked: value, attr:{readonly: readonly}" />
+						<input type="checkbox" data-bind="checked: value, attr:{disabled: readonly}" />
 					<!-- /ko -->
 					<!-- ko if:	editType=='area'-->
 						<textarea data-bind="value: value, attr:{readonly: readonly}" ></textarea>
@@ -80,7 +87,7 @@
 				<div data-bind="foreach: propertiesItems().event">
 					<span data-bind="text: name"></span>
 					<!-- ko if:	editType=='txt'-->
-						<input type="text" data-bind="value: value, attr:{readonly: readonly}" />
+						<input type="text" data-bind="textInput: value, attr:{readonly: readonly}" />
 					<!-- /ko -->
 					<!-- ko if:	editType=='chkbox'-->
 						<input type="checkbox" data-bind="checked: value, attr:{readonly: readonly}" />

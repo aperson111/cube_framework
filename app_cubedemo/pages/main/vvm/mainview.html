@@ -30,7 +30,8 @@
 				subTitle:'设置组件属性',
 				titleSize::'h5',
 				isSubtitleWrap:true"></cube_pageheader>
-		<div class="body" data-bind="style:{height: (windowHeight()-footHeight-70)+'px'}">
+		<div class="body" style="position: relative;" 
+			data-bind="style:{height: (windowHeight()-footHeight-70)+'px'}">
 			<!-- ko if: selectedComponent()!=null -->
 			<div data-bind="component: {name: 'app_cubedemo.rightSetProperty.main',
 				params: {properties: selectedComponent().params} }"></div>

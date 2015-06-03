@@ -11,6 +11,7 @@
 	 	selectedChanged:		选中变更事件
 	 	isFixTop:				是否上方悬浮								可选，默认不悬浮
 	 	isInverse:				是否反向显示								可选。默认不反向。
+	 	isHrefRoute:            是否设置锚定值
 	 */
  	function navbarViewModel(params) {
 		var self = this;
@@ -36,6 +37,9 @@
 		
 		//是否反向显示
 		self.isInverse = cube.initComponentProperty(params.isInverse, false, 'obj');
+		
+		//是否设置锚定值
+		self.isHrefRoute = cube.initComponentProperty(params.isHrefRoute, true, 'obj');
 		
 		//内部视图模型属性，当前选中项
 		//然后由于navbar有多层，通过compute方法，然后遍历获取，会影响效率。
@@ -99,6 +103,9 @@
 		self.selectedRoute.subscribe(function(newValue) {
 			if(self.selectedChanged!=null) {
 				self.selectedChanged(self.selectedItem());
+			}
+			if(self.isHrefRoute()) {
+				window.location.hash = newValue;
 			}
 		});
 		//***********************************************************

@@ -1,6 +1,6 @@
 <div class="navbar" data-bind="css:{'navbar-fixed-top': isFixTop,'navbar-inverse': isInverse}">
 	<div class="navbar-inner">
-		<a class="brand" href="#" data-bind="text: navTitle"></a>
+		<a class="brand" data-bind="text: navTitle"></a>
 			
 		<ul class="nav"	data-bind="foreach: items" >
 			<li data-bind="	event:{mouseover:$parent.openSubItems,mouseout:$parent.closeSubItems},

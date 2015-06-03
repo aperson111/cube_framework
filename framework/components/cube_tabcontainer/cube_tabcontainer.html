@@ -1,6 +1,6 @@
 <ul id="myTab" class="nav nav-tabs" data-bind="foreach: tabContents">
 	<li data-bind="css:{'active':  $parent.selectedTabRoute() == route} ">
-		<a href="#" data-bind="click: $parent.showTabContent, text: text"></a>
+		<a href="#" data-bind="click: $parent.showTabContent, text: text,attr:{href: route}"></a>
 	</li>
 </ul>
 <div data-bind="template: {name: selectedTabRoute}"></div>

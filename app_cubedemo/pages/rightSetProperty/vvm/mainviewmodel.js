@@ -21,6 +21,8 @@ define([], function() {
 				obj.propertyKey = pro;
 				obj.name= params.properties.appearance[pro].name;
 				obj.editType =params.properties.appearance[pro].editType;
+				if(obj.editType == 'dropdownlist')
+					obj.options = params.properties.option[pro].options;
 				obj.value =params.properties.appearance[pro].value;
 				obj.readonly =params.properties.appearance[pro].readonly;
 				item.appearance.push(obj);
@@ -30,7 +32,9 @@ define([], function() {
 				var obj = {};
 				obj.propertyKey = pro;
 				obj.name= params.properties.option[pro].name;
-				obj.editType =params.properties.option[pro].editType;
+				obj.editType = params.properties.option[pro].editType;
+				if(obj.editType == 'dropdownlist')
+					obj.options = params.properties.option[pro].options;
 				obj.value =params.properties.option[pro].value;
 				obj.readonly =params.properties.option[pro].readonly;
 				item.option.push(obj);
@@ -41,6 +45,8 @@ define([], function() {
 				obj.propertyKey = pro;
 				obj.name= params.properties.data[pro].name;
 				obj.editType =params.properties.data[pro].editType;
+				if(obj.editType == 'dropdownlist')
+					obj.options = params.properties.option[pro].options;
 				obj.value =params.properties.data[pro].value;
 				obj.readonly =params.properties.data[pro].readonly;
 				item.data.push(obj);
@@ -51,6 +57,8 @@ define([], function() {
 				obj.propertyKey = pro;
 				obj.name= params.properties.event[pro].name;
 				obj.editType =params.properties.event[pro].editType;
+				if(obj.editType == 'dropdownlist')
+					obj.options = params.properties.option[pro].options;
 				obj.value =params.properties.event[pro].value;
 				obj.readonly =params.properties.event[pro].readonly;
 				item.event.push(obj);

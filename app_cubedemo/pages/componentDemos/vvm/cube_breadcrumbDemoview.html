@@ -1,4 +1,8 @@
+<button class="btn btn-primary" data-bind="click: reloadData">重置数据</button>
+
 <cube_breadcrumb params="
 	items: params.data.items.value,
 	selectedRoute:params.data.selectedRoute.value,
-	splitTxt: params.option.splitTxt.value"></cube_breadcrumb>
+	splitTxt: params.option.splitTxt.value,
+	selectedChanged: modifyRoute,
+	isHrefRoute: params.option.isHrefRoute.value"></cube_breadcrumb>

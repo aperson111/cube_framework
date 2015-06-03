@@ -62,6 +62,10 @@ define(['sammy'], function(sammy) {
 		self.modifyNavRootItem = function(e) {
 			if(DEBUG_MODE)
 				alert("Navbar事件：当前选中为: "+e.text);
+			
+			
+			
+			//设置tab标签和右侧下拉框内容
 			self.firstRoute(e.route.split('/')[0]);
 			
 			if(self.currentNavRoute().indexOf('#linelossmenu')>-1)
@@ -73,22 +77,18 @@ define(['sammy'], function(sammy) {
 					self.secondTabRoute(e.route.split('/')[1]);
 				}
 			}
-			//显示模态对话框
-			self.showModalDialog(true);
-		}
-		
-		self.breadcrumbItems = cube.comp(function(){
-			var items = [self.navItems()[0]];
-			if(self.currentNavRoute()=='#home')
-				return items;
+			
+			//面包屑导航
+			var breadcrumbItems = [self.navItems()[0]];
 			
 			$.each(self.navItems(),function(){
 				if(self.firstRoute() == this.route) {
-					items.push(this);
+					if(e.route != '#home')
+						breadcrumbItems.push(this);
 					if(this.hasChildren) {
 						$.each(this.children, function(){
 							if(self.firstRoute()+'/'+self.secondTabRoute() == this.route) {
-								items.push(this);
+								breadcrumbItems.push(this);
 								return;
 							}
 						});
@@ -96,8 +96,35 @@ define(['sammy'], function(sammy) {
 					return;
 				}
 			});
-			return items;
-		},self);
+			self.breadcrumbItems(breadcrumbItems);
+			
+			//显示模态对话框
+			self.showModalDialog(true);
+		}
+		
+		self.breadcrumbItems = cube.arr([self.navItems()[0]]);
+		
+//		self.breadcrumbItems = cube.comp(function(){
+//			var items = [self.navItems()[0]];
+//			if(self.currentNavRoute()=='#home')
+//				return items;
+//			
+//			$.each(self.navItems(),function(){
+//				if(self.firstRoute() == this.route) {
+//					items.push(this);
+//					if(this.hasChildren) {
+//						$.each(this.children, function(){
+//							if(self.firstRoute()+'/'+self.secondTabRoute() == this.route) {
+//								items.push(this);
+//								return;
+//							}
+//						});
+//					}
+//					return;
+//				}
+//			});
+//			return items;
+//		},self);
 		
 		//测试内容：外部设置导航菜单项
 		self.navItemOptions = cube.arr([
@@ -110,6 +137,9 @@ define(['sammy'], function(sammy) {
 		self.modifyNavDropdownItem = function(e) {
 			if(DEBUG_MODE)
 				alert("Dropdownlist事件：当前选中为: "+e.text);
+
+			
+			//tab标签、下拉框选项设置
 			if(e.value != '#linelossmenu')
 				self.currentNavRoute(e.value);
 			else {
@@ -120,6 +150,8 @@ define(['sammy'], function(sammy) {
 					self.currentNavRoute("#linelossmenu/"+self.secondTabRoute());
 				}
 			}
+			
+			
 		}
 		
 		//测试内容：导航条交互下拉框选中值
