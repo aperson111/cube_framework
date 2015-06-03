@@ -1,10 +1,8 @@
 <div class='row-fluid'>
 	<div class='span3'>
 		<div class='demo-container-panel'>
-			<cube_pageheader class="head" params="title: '组件列表',
-				subTitle: '单击组件进行组件属性设置',
-				titleSize:'h5',
-				isSubtitleWrap: true"></cube_pageheader>
+			<cube_pageheader class="head" params="title: '组件列表',subTitle:'单击组件进行组件属性设置',
+				titleSize:'h5',isSubtitleWrap:true"></cube_pageheader>
 		<div class="body" data-bind="style:{height: (windowHeight()-footHeight-70)+'px'}">
 			<div data-bind="component: { name: 'app_cubedemo.expandComponents.componentsList',
 				params:{selectedComponent: selectedComponent} }"></div>
@@ -14,15 +12,12 @@
 	
 	<div class='span6'>
 		<div class='demo-container-panel'>
-			<cube_pageheader class="head"  params="title: '组件显示效果',
-				subTitle: '通过组件属性设置，实现所见即所得的展现',
-				titleSize:'h5',
-				isSubtitleWrap: true"></cube_pageheader>
+			<cube_pageheader class="head"  params="title:'组件显示效果',subTitle:'通过组件属性设置，实现所见即所得的展现',
+				titleSize:'h5',isSubtitleWrap:true"></cube_pageheader>
 		<div class="body" data-bind="style:{height: (windowHeight()-footHeight-70)+'px'}">
 			<!-- ko if: selectedComponent()!=null -->
-				<div data-bind="component: {name: selectedComponent().value,
-					params: selectedComponent().params}">
-				</div>
+				<div data-bind="component: {name: 'app_cubedemo.componentDemos.'+selectedComponent().value+'Demo',
+					params: selectedComponent().params}"></div>
 			<!-- /ko -->
 		</div>
 		</div>
@@ -30,10 +25,11 @@
 	
 	<div class='span3'>
 		<div class='demo-container-panel'>
-			<cube_pageheader class="head"  params="title: (selectedComponent() !=null ? selectedComponent().name : '')+'属性',
-				subTitle: '设置组件属性',
-				titleSize:'h5',
-				isSubtitleWrap: true"></cube_pageheader>
+			<cube_pageheader class="head"  params="
+				title: (selectedComponent() !=null ? selectedComponent().name : '')+'属性',
+				subTitle:'设置组件属性',
+				titleSize::'h5',
+				isSubtitleWrap:true"></cube_pageheader>
 		<div class="body" data-bind="style:{height: (windowHeight()-footHeight-70)+'px'}">
 			<!-- ko if: selectedComponent()!=null -->
 			<div data-bind="component: {name: 'app_cubedemo.rightSetProperty.main',

@@ -1,0 +1,8 @@
+<button class="btn btn-primary" data-bind="click: showModalDialog">弹出</button>
+
+<cube_modaldialog params="
+	isShowDialog: params.data.isShowDialog.value,
+	title: params.data.title.value,
+	content:params.data.content.value,
+	isShowCloseBtn: params.option.isShowCloseBtn.value,
+	isShowConfirmBtn: params.option.isShowConfirmBtn.value"></cube_modaldialog>

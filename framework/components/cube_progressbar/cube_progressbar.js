@@ -14,11 +14,11 @@
 		//***********************************************************	
 		
 		//导航条内容
-		self.progressValue = cube.initComponentProperty(params.data.progressValue.value, 0, 'obj');
+		self.progressValue = cube.initComponentProperty(params.progressValue, 0, 'obj');
 		
 		//进度的不同状态的阀值
-		self.warningValue = cube.initComponentProperty(params.option.warningValue.value, 1, 'obj');
-		self.dangerValue =  cube.initComponentProperty(params.option.dangerValue.value, 1, 'obj');
+		self.warningValue = cube.initComponentProperty(params.warningValue, 1, 'obj');
+		self.dangerValue =  cube.initComponentProperty(params.dangerValue, 1, 'obj');
 		
 		//进度条的进度状态数组，内部属性
 		self.progressItems = cube.comp(function(){

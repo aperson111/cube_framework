@@ -20,22 +20,22 @@
 		//***********************************************************	
 		
 		//导航标题。默认为空
-		self.navTitle = cube.initComponentProperty(params.data.navTitle.value,"", 'obj');
+		self.navTitle = cube.initComponentProperty(params.navTitle,"", 'obj');
 		
 		//导航条内容
-		self.items = cube.initComponentProperty(params.data.items.value, [], 'arr');//params.items;
+		self.items = cube.initComponentProperty(params.items, [], 'arr');//params.items;
 		
 		//是否显示导航条分隔符，默认显示
-		self.isShowDividerVertical = cube.initComponentProperty(params.option.isShowDividerVertical.value, false, 'obj');
+		self.isShowDividerVertical = cube.initComponentProperty(params.isShowDividerVertical, false, 'obj');
 		
 		//选中路由
-		self.selectedRoute = cube.initComponentProperty(params.data.selectedRoute.value, self.items()[0].route, 'obj');
+		self.selectedRoute = cube.initComponentProperty(params.selectedRoute, self.items()[0].route, 'obj');
 		
 		//是否在上方悬浮
-		self.isFixTop = cube.initComponentProperty(params.option.isFixTop.value, false, 'obj');
+		self.isFixTop = cube.initComponentProperty(params.isFixTop, false, 'obj');
 		
 		//是否反向显示
-		self.isInverse = cube.initComponentProperty(params.option.isInverse.value, false, 'obj');
+		self.isInverse = cube.initComponentProperty(params.isInverse, false, 'obj');
 		
 		//内部视图模型属性，当前选中项
 		//然后由于navbar有多层，通过compute方法，然后遍历获取，会影响效率。
@@ -65,7 +65,7 @@
 		},self);
 
 		//选中变化处理事件。
-		self.selectedChanged = params.event.selectedChanged.value!= null? params.event.selectedChanged.value : null;
+		self.selectedChanged = params.selectedChanged!= null? params.selectedChanged : null;
 		
 		//内部视图模型属性。鼠标经过菜单项，为hover样式。
 		self.hoverItem = cube.obj();

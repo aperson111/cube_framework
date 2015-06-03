@@ -1,22 +1,23 @@
 <div class="btn-group"
-	data-bind="css:{'open': isShowDropdownOptions},
-				event:{mouseover: doOpenDropdownOptions,mouseout: doCloseDropdownOptions}" >
+	data-bind="css:{'open': isShowDropdownOptions}" >
 
 	<!-- ko ifnot:isSplit -->
-		<button class="btn dropdown-toggle" data-toggle="dropdown" data-bind="attr:{disabled: disabled}">
+		<button class="btn dropdown-toggle" data-toggle="dropdown" data-bind="attr:{disabled: disabled},
+			event:{mouseover: doOpenDropdownOptions,mouseout: doCloseDropdownOptions}">
 			<!-- ko text: selectedItem().text--><!-- /ko -->
 			<span class="caret"></span>
 		</button>
 	<!-- /ko -->
 	
 	<!-- ko if: isSplit-->
-		<button class="btn" data-bind="text:selectedItem().text" data-bind="attr:{disabled: disabled}></button>
-		<button class="btn dropdown-toggle" data-toggle="dropdown" data-bind="attr:{disabled: disabled}>
-    		<span class="caret"></span>
+		<button class="btn" data-bind="text:selectedItem().text,attr:{disabled: disabled}"></button>
+		<button class="btn dropdown-toggle" data-toggle="dropdown" data-bind="attr:{disabled: disabled},
+			event:{mouseover: doOpenDropdownOptions,mouseout: doCloseDropdownOptions}">
+    		<span class="caret" data-bind=""></span>
   		</button>
   	<!-- /ko -->
   	
-	<ul class="dropdown-menu" data-bind="foreach: items" style="margin-top: -1px;">
+	<ul class="dropdown-menu" data-bind="foreach: items,event:{mouseover: doOpenDropdownOptions,mouseout: doCloseDropdownOptions}" style="margin-top: -1px;">
 		<li><a href="#" data-bind="text: text,click: $parent.selectItem"></a> </li>
 	</ul>
 </div>

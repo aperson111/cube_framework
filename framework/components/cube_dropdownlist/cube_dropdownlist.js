@@ -20,7 +20,8 @@ define([], function() {
 		self.items = cube.initComponentProperty(params.items, [], 'arr');
 		
 		//设置选中值
-		self.selectedValue = cube.initComponentProperty(params.selectedValue, self.items().length>0?self.items()[0].value:"", 'obj');
+		self.selectedValue = cube.initComponentProperty(params.selectedValue, 
+				self.items().length>0?self.items()[0].value:"", 'obj');
 			
 		//内部模型属性，下拉框选中项
 		self.selectedItem = cube.comp(function(){
@@ -37,8 +38,8 @@ define([], function() {
 		//是否为分裂下拉框
 		self.isSplit = cube.initComponentProperty(params.isSplit, false, 'obj');
 		
-		//是否显示下拉框
-		self.isShowDropdownOptions = cube.initComponentProperty(params.isShowDropdownOptions, false, 'obj');
+		//内部属性是否显示下拉框
+		self.isShowDropdownOptions = cube.obj(false);
 		
 		//选中变化处理事件。
 		self.selectedChanged = params.selectedChanged!= null? params.selectedChanged : null;

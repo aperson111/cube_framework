@@ -16,17 +16,17 @@
 		//***********************************************************	
 		
 		//导航条内容
-		self.items = cube.initComponentProperty(params.data.items.value, [], 'arr');//params.items;
+		self.items = cube.initComponentProperty(params.items, [], 'arr');//params.items;
 		
 		//选中路由
-		self.selectedRoute = cube.initComponentProperty(params.data.selectedRoute.value, null, 'obj');
+		self.selectedRoute = cube.initComponentProperty(params.selectedRoute, null, 'obj');
 		
 		//分隔符
-		self.splitTxt = cube.initComponentProperty(params.option.splitTxt.value, '/', 'obj');
+		self.splitTxt = cube.initComponentProperty(params.splitTxt, '/', 'obj');
 		
 		
 		//选中变化处理事件。
-		self.selectedChanged = params.event.selectedChanged.value!= null? params.event.selectedChanged.value : null;
+		self.selectedChanged = params.selectedChanged!= null? params.selectedChanged : null;
 		//***********************************************************
 		//结束初始化视图模型数据**************************************
 		//***********************************************************	

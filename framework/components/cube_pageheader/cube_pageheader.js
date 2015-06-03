@@ -20,10 +20,10 @@
 		//副标题
 		self.subTitle = cube.initComponentProperty(params.subTitle, '', 'obj');
 		
-		//副标题
+		//标题尺寸
 		self.titleSize = cube.initComponentProperty(params.titleSize, 'h1', 'obj');
 		
-		//副标题
+		//副标题是否换行
 		self.isSubtitleWrap = cube.initComponentProperty(params.isSubtitleWrap, true, 'obj');
 		//***********************************************************
 		//结束初始化视图模型数据**************************************
