@@ -116,7 +116,8 @@ CUBE = function()
 	                       "cube_calendar",
 	                       "cube_progressbar",
 	                       "cube_modaldialog",
-	                       "cube_pageheader"];
+	                       "cube_pageheader",
+	                       "cube_collapsepanel"];
 	self.importedComponents = [];
 	self.loadedPagePartVVM = [];
 	self.loadedPagePart = [];//保留

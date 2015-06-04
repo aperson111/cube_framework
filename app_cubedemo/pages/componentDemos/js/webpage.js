@@ -13,14 +13,19 @@ define(['text', 'webpage'], function(text,WebPage) {
 		             "cube_tabcontainer",
 		             "cube_dropdownlist",
 		             "cube_pageheader",
-		             "cube_modaldialog"],
+		             "cube_modaldialog",
+		             "cube_collapsepanel"],
 		vvms: ["app_cubedemo.componentDemos.cube_progressbarDemo",
 		       "app_cubedemo.componentDemos.cube_navbarDemo",
 		       "app_cubedemo.componentDemos.cube_breadcrumbDemo",
 		       "app_cubedemo.componentDemos.cube_tabcontainerDemo",
+		       "app_cubedemo.componentDemos.cube_tabcontainerTemplDemo",
 		       "app_cubedemo.componentDemos.cube_modaldialogDemo",
 		       "app_cubedemo.componentDemos.cube_dropdownlistDemo",
-		       "app_cubedemo.componentDemos.cube_pageheaderDemo"]
+		       "app_cubedemo.componentDemos.cube_pageheaderDemo",
+		       "app_cubedemo.componentDemos.cube_collapsepanelDemo",
+		       "app_cubedemo.componentDemos.cube_collapsepanel1TemplDemo",
+		       "app_cubedemo.componentDemos.cube_collapsepanel2TemplDemo"]
 	});
 
     return webp;

@@ -40,10 +40,17 @@
 						<input type="checkbox" data-bind="checked: value, attr:{disabled: readonly}" />
 					<!-- /ko -->
 					<!-- ko if: editType =='dropdownlist' -->
+						
+						<!-- 
+						<cube_dropdownlist params="selectedValue: value,
+							items: options">
+						</cube_dropdownlist>
+						 -->
 						<div data-bind="component:{
 							name: 'cube_dropdownlist',
 							params: {selectedValue: value, items: options}
 							}"></div>
+							
 					<!-- /ko -->
 					<br />
 				</div>

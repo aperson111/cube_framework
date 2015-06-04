@@ -1,12 +1,15 @@
-#Wed Jun 03 09:14:32 CST 2015
+#Thu Jun 04 10:02:56 CST 2015
 eclipse.preferences.version=1
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_breadcrumbDemoview.html=UTF-8
+encoding//app_cubedemo/pages/componentDemos/vvm/cube_collapsepanel1TemplDemoview.html=UTF-8
+encoding//app_cubedemo/pages/componentDemos/vvm/cube_collapsepanel2TemplDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_dropdownlistDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_modaldialogDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_navbarDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_pageheaderDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_progressbarDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_tabcontainerDemoview.html=UTF-8
+encoding//app_cubedemo/pages/componentDemos/vvm/cube_tabcontainerTemplDemoview.html=UTF-8
 encoding//app_cubedemo/pages/main/vvm/mainview.html=UTF-8
 encoding//app_cubedemo/pages/rightSetProperty/vvm/mainview.html=UTF-8
 encoding//app_lineloss/pages/content/vvm/actionupload_pageview.html=UTF-8

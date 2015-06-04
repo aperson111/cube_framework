@@ -1,19 +1,4 @@
-<!-- ko foreach: components-->
-<div class="row-fluid">
-	<div class="span4" style="padding-left:10px;*padding-left:0px;">
-		<a class="thumbnail" style="margin-bottom:10px;"
-			data-bind="click: $parent.setSelectedComponent,attr:{href: '#'+value}">
-			<img style="width:68px;height:68px;" data-bind="attr:{src: $parent.thumbnailRootUrl+value+'.png'}"/>
-		</a>
-	</div>
-	<div class="span8">
-		<div class="page-header" style="margin:0px;padding:0px;;border:0px;">
-			<h5>
-				<!-- ko text: name--><!-- /ko -->
-				<br/>
-				<small data-bind="text: desc"></small>
-			</h5>
-		</div>
-	</div>
-</div>
-<!-- /ko -->
+<cube_collapsepanel params="
+	panels: componentTypePanels,
+	isContentType: false">
+</cube_collapsepanel>

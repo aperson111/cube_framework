@@ -3,4 +3,9 @@
 		<a href="#" data-bind="click: $parent.showTabContent, text: text,attr:{href: route}"></a>
 	</li>
 </ul>
-<div data-bind="template: {name: selectedTabRoute}"></div>
+<!-- ko if: isContentType -->
+<div class="tab-content" data-bind="html: selectedTab().content"></div>
+<!-- /ko -->
+<!-- ko ifnot: isContentType -->
+<div class="tab-content" data-bind="component: selectedTab().templateOptions"></div>
+<!-- /ko -->

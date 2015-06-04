@@ -2,12 +2,12 @@ define([], function() {
 
 	/**
 	 * 标签容器
-	 * params: 组件的视图模型设置参数
-	 	tabContents: cube.arr()类型，tab容器的tab项数组			必须。
+	 *	tabContents: cube.arr()类型，tab容器的tab项数组			必须。
 	 	selectedTabRoute: 当前选中项的路由，默认为第一个值。	可选。注意：如果外部希望得到该值，则该参数为必须。
 	 	selectedChanged: 选中内容变化处理事件。				可选。
 	 	disabled:		设置tab是否可用
 	 	isHrefRoute:            是否设置锚定值
+	 	isContentType:   设置是否为内容类型，否则为模板类型。通过外部模板加载实现。
 	 */
  	function tabContainerViewModel(params) {
 		var self = this;
@@ -40,6 +40,8 @@ define([], function() {
 		},self);
 		
 		self.selectedChanged = params.selectedChanged!= null? params.selectedChanged : null;
+		
+		self.isContentType = cube.initComponentProperty(params.isContentType, true, 'obj');
 		//***********************************************************
 		//结束初始化视图模型数据**************************************
 		//***********************************************************	

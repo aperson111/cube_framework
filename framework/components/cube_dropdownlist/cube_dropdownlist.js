@@ -2,8 +2,7 @@ define([], function() {
 
 	/**
 	 * 下拉框组件
-	 * params: 组件的视图模型设置参数
-	 	items:       cube.arr()类型，下拉框的选项。			必须。
+	 *  items:       cube.arr()类型，下拉框的选项。			必须。
 	 	selectedValue: 当前选中项，默认为第一个值。				可选。注意：如果外部希望得到该值，则该参数为必须。
 	 	isSplit:	下拉框是否为分裂模式，默认为非分裂模式。	可选。
 	 	selectedChanged: 选中内容变化处理事件。				可选。
@@ -46,7 +45,7 @@ define([], function() {
 		self.selectedChanged = params.selectedChanged!= null? params.selectedChanged : null;
 		
 		//下拉框是否可用
-		self.disabled = cube.initComponentProperty(params.disabled, true, 'obj');
+		self.disabled = cube.initComponentProperty(params.disabled, false, 'obj');
 		
 		//是否设置锚定值
 		self.isHrefRoute = cube.initComponentProperty(params.isHrefRoute, false, 'obj');

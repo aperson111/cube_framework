@@ -7,6 +7,7 @@ define(['text', 'webpage'], function(text,WebPage) {
 
 	//加载方式一：显示加载，调用webpage类的组件注册和子页面注册方法，实现加载。
 	var webp = new WebPage({
+		components: ["cube_dropdownlist"],
 		vvms: ["app_cubedemo.rightSetProperty.main"]
 	});
 

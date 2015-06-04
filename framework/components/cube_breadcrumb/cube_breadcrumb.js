@@ -2,8 +2,7 @@
 
 	/**
 	 * 面包屑导航
-	 * params: 组件的视图模型设置参数
-	 	items: 					导航条内容。								必须。
+	 *  items: 					导航条内容。								必须。
 	 	selectedRoute:				当前选中的导航条。					可选。注意：如果外部希望得到该值，则该参数为必须。	
 	 	selectedChanged:		选中变更事件								可选。
 	 	splitTxt:				分隔符									可选。默认为'/'
