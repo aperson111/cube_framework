@@ -8,7 +8,7 @@ define([], function() {
 
 		self.selectedComponent = params.selectedComponent;
 		
-		self.thumbnailRootUrl = '../expandComponents/thumbnails/';
+		self.thumbnailRootUrl = '/app_cubedemo/resources/images/componentsThumbnails/';
 		
 		
 		self.components = cube.arr([
