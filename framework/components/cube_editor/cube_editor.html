@@ -1,0 +1,46 @@
+<!-- ko if:	editType()=='txt'-->
+<input type="text"
+	data-bind="textInput: value().txt, attr:{readonly: readonly}" />
+<!-- /ko -->
+
+<!-- ko if:	editType()=='area'-->
+	<textarea data-bind="value: value().area, attr:{readonly: readonly}" ></textarea>
+<!-- /ko -->
+
+<!-- ko if: editType() =='dropdownlist' -->
+<div
+	data-bind="component:{
+		name: 'cube_dropdownlist',
+		params: {selectedValue: value().dropdownlist, items: editOptions().dropdownlist, diabled: readonly}
+	}">
+</div>
+<!-- /ko -->
+
+<!-- ko if:	editType()=='chkbox'-->
+<input type="checkbox"
+	data-bind="checked: value().chkbox, attr:{disabled: readonly}" />
+<!-- /ko -->
+
+<!-- ko if:	editType()=='radioGroup'-->
+<div data-bind="foreach: editOptions().radioGroup.options ">
+<input type="radio"
+	data-bind="checked: $parent.value().radioGroup, attr:{value: $data,name: $parent.editOptions().radioGroup.name, disabled: $parent.readonly}" />
+<span data-bind="text: $data"></span>
+</div>
+<!-- /ko -->
+
+<!-- ko if:	editType()=='chkboxGroup'-->
+<div data-bind="foreach: editOptions().chkboxGroup.options ">
+    <input type="checkbox" data-bind="checkedValue: $data, checked: $parent.value().chkboxGroup" />
+    <span data-bind="text: $data"></span>
+</div>
+<!-- /ko -->
+
+<!-- ko if:	editType()=='list'-->
+<div>
+<ul class="dropdown-menu" style="position: static;display: block; float: none;" data-bind="foreach: editOptions().list">
+		<li><a href="#" data-bind="text: $data,click: $parent.selectListItem"></a> </li>
+</ul>
+</div>
+<!-- /ko -->
+

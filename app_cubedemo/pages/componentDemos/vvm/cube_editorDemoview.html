@@ -1,0 +1,35 @@
+<cube_editor params="value: params.data.value.value,
+	readonly: params.option.readonly.value,
+	editType: params.option.editType.value,
+	editOptions: params.option.editOptions.value"></cube_editor>
+
+<br />
+当前编辑内容：
+<br />
+<!-- ko if:	params.option.editType.value()=='txt'-->
+<div data-bind="text: params.data.value.value.txt"></div>
+<!-- /ko -->
+
+<!-- ko if:	params.option.editType.value()=='area'-->
+<div data-bind="text: params.data.value.value.area"></div>
+<!-- /ko -->
+
+<!-- ko if: params.option.editType.value() =='dropdownlist' -->
+<div data-bind="text: params.data.value.value.dropdownlist"></div>
+<!-- /ko -->
+
+<!-- ko if:	params.option.editType.value()=='chkbox'-->
+<div data-bind="text: params.data.value.value.chkbox"></div>
+<!-- /ko -->
+
+<!-- ko if:	params.option.editType.value()=='radioGroup'-->
+<div data-bind="text: params.data.value.value.radioGroup"></div>
+<!-- /ko -->
+
+<!-- ko if:	params.option.editType.value()=='chkboxGroup'-->
+<div data-bind="text: params.data.value.value.chkboxGroup"></div>
+<!-- /ko -->
+
+<!-- ko if:	params.option.editType.value()=='list'-->
+<div data-bind="text: params.data.value.value.list"></div>
+<!-- /ko -->
