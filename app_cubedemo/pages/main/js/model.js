@@ -12,6 +12,8 @@ define(['./webpage'], function() {
 		self.windowWidth = cube.obj();
 		
 		self.footHeight = 20;
+		
+		self.isSupportHtml5 = cube.isSupportHtml5();
 	};
 	
 	var pvm = new PageViewModel();

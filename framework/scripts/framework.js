@@ -46,7 +46,12 @@ var require = {
 
 document.write("<link rel='stylesheet' href="+rootPath+"/framework/resources/css/bootstrap2.3.2.css"+ ">");
 
+document.write("<link rel='stylesheet' href="+rootPath+"/framework/resources/css/font-awesome.css"+ ">");
+
+
 document.write("<link rel='stylesheet' href="+rootPath+"/framework/resources/css/cube.css"+ ">");
+
+
 
 document.write("<script type='text/javascript' src="+rootPath+"/framework/scripts/libs/jquery-1.11.1.min.js></script>");
 document.write("<script type='text/javascript' src="+rootPath+"/framework/scripts/libs/knockout-3.2.0.debug.js></script>");
@@ -117,7 +122,9 @@ CUBE = function()
 	                       "cube_progressbar",
 	                       "cube_modaldialog",
 	                       "cube_pageheader",
-	                       "cube_collapsepanel"];
+	                       "cube_collapsepanel",
+	                       "cube_richeditor",
+	                       "cube_editor"];
 	self.importedComponents = [];
 	self.loadedPagePartVVM = [];
 	self.loadedPagePart = [];//保留

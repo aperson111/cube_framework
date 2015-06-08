@@ -1,11 +1,15 @@
 define([], function() {
 	
+	/**
+	 * contentHtml: 内容html。允许拷贝到页面直接用。
+	 */
 	var PageViewModel = function(params) {
 		var self = this;
 
 		self.selectedComponent = params.selectedComponent;
 		
 		self.thumbnailRootUrl = '../expandComponents/thumbnails/';
+		
 		
 		self.components = cube.arr([
  		   {
@@ -495,7 +499,121 @@ define([], function() {
  		    		event: {
  		    		}
  		    	}
- 		    }
+ 		    },
+ 		   {
+ 		    	value: 'cube_clock',
+ 		    	componentType: 'html5',
+ 		    	name : '时钟显示组件',
+ 		    	desc : '基于HTML5和CSS3标准',
+ 		    	params:{
+ 		    		appearance: {
+ 		    		},
+ 		    		option: {
+ 		    			clockSize: {
+ 		    				desc: '时钟尺寸大小，单位为像素',
+ 		    				name:	"时钟大小",
+ 		    				editType: 'txt',
+ 		    				value: cube.obj('100'),
+ 		    				readonly: false
+ 		    			}
+ 		    		},
+ 		    		data: {
+ 		    			time: {
+ 		    				desc: '时间，默认为当前时间',
+ 		    				name:	"显示时间",
+ 		    				editType: 'txt',
+ 		    				value: cube.obj({hh:new Date().getHours(),
+ 		    					mm: new Date().getMinutes(),
+ 		    					ss:new Date().getSeconds()}),
+ 		    				readonly: true
+ 		    			}
+ 		    		},
+ 		    		event: {
+ 		    		}
+ 		    	}
+ 		    },
+  		   {
+		    	value: 'cube_editor',
+		    	componentType: 'editor',
+		    	name : '编辑组件',
+		    	desc : '通过该组件，可以指定单个编辑组件',
+		    	params:{
+		    		appearance: {
+		    		},
+		    		option: {
+		    			editType: {
+ 		    				desc: '编辑器类型，包括单选、复选、输入框、下拉框、列表、时间选择等',
+ 		    				name:	"编辑器类型",
+ 		    				editType: 'dropdownlist', //编辑类型
+ 		    				value: cube.obj('txt'),
+ 		    				options: cube.arr([{value:'txt',text:'文本框'},
+ 		    				                  {value:'area',text:'多行文本框'},
+ 		    				                 {value:'dropdownlist',text:'下拉框'},
+ 		    				                 {value:'chkbox',text:'复选框'},
+ 		    				                 {value:'radioGroup',text:'单选框'},
+ 		    				                 {value:'chkboxGroup',text:'复选框组'},
+ 		    				                 {value:'list',text:'列表'}//,
+ 		    				                 //{value:'datetimepicker',text:'时间选择'},
+ 		    				                 //{value:'richeditor',text:'富文本编辑器'}
+ 		    				                ]),
+ 		    				readonly: false
+ 		    		    },
+ 		    		    editOptions: {
+		    				desc: '编辑器的参数',
+		    				name:	"编辑器的参数",
+		    				editType: 'area', //编辑类型
+		    				value: {
+		    					dropdownlist:  cube.arr([
+		    					   {value:'选择1',text:'选择1'},
+		    		    			{value:'选择2',text:'选择2'},
+		    	 		    		{value:'选择3',text:'选择3'},
+		    	 		    		{value:'选择4',text:'选择4'},
+		    	 		    		{value:'选择5',text:'选择5'},
+		    	 		    		{value:'选择6',text:'选择6'},
+		    	 		    		{value:'选择7',text:'选择7'},
+		    	 		    		{value:'选择8',text:'选择8'}
+		    	 		    	]),
+		    	 		    	radioGroup: {
+		    	 		    		name: 'radiotest',
+		    	 		    		options: ['发电','输电','变电','配电','用电']
+		    	 		    	},
+		    	 		    	chkboxGroup: {
+		    	 		    		name: 'chkboxgrouptest',
+		    	 		    		options: ['发电','输电','变电','配电','用电']
+		    	 		    	},
+		    	 		    	list: cube.arr(['发电','输电','变电','配电','用电'])
+		    				},
+		    				readonly: true
+		    		    },
+		    		    readonly: {
+		    		    	desc: '是否允许编辑，true为不可编辑',
+ 		    				name:	"是否允许编辑",
+ 		    				editType: 'chkbox',
+ 		    				value: cube.obj(false),
+ 		    				readonly: false
+		    		    }
+		    		},
+		    		data: {
+		    			value: {
+		    				desc: '编辑器内容',
+		    				name:	"编辑器内容",
+		    				editType: 'area',
+		    				value: {
+		    					txt: cube.obj('文本框'),
+		    					area: cube.obj('多行文本框'),
+		    					dropdownlist: cube.obj('选择1'),
+		    					chkbox: cube.obj(true),
+		    					radioGroup: cube.obj('发电'),
+		    					chkboxGroup: cube.arr(['发电','输电']),
+		    					list: cube.obj('发电')
+		    				},
+		    				readonly: true
+		    			}
+		    		},
+		    		event: {
+		    		}
+		    	}
+		    }
         ]);
 
 		self.setSelectedComponent = function() {
@@ -515,7 +633,7 @@ define([], function() {
 				    	thumbnailRootUrl: self.thumbnailRootUrl,
 					    setSelectedComponent: self.setSelectedComponent
 					}
-				},
+				}
 		   },
 		   {
 			   route : 'nav',
@@ -557,6 +675,19 @@ define([], function() {
 			   }
 		   },
 		   {
+			   route : 'editor',
+			   title : '编辑类组件',
+			   templateOptions : {
+				   name : 'app_cubedemo.expandComponents.componentsListsTypeTmpl',
+				   params : {
+					   route: 'editor',
+					   components: self.components,
+					   thumbnailRootUrl: self.thumbnailRootUrl,
+					   setSelectedComponent: self.setSelectedComponent
+				   }
+			   }
+		   },
+		   {
 			   route : 'pb',
 			   title : '排版类组件',
 			   templateOptions : {
@@ -571,6 +702,21 @@ define([], function() {
 		   }
 		];
 		
+		if(cube.isSupportHtml5()) {
+			self.componentTypePanels.push({
+				   route : 'html5',
+				   title : 'html5组件',
+				   templateOptions : {
+					   name : 'app_cubedemo.expandComponents.componentsListsTypeTmpl',
+					   params : {
+						   route: 'html5',
+						   components: self.components,
+						   thumbnailRootUrl: self.thumbnailRootUrl,
+						   setSelectedComponent: self.setSelectedComponent
+					   }
+				   }
+			   });
+		}
 
 	};
 	

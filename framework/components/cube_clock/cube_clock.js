@@ -1,5 +1,8 @@
 define([], function() {
 
+	/**
+	 * 时钟显示控件，html5控件
+	 */
  	function clockViewModel(params) {
 		var self = this;
 		
@@ -57,5 +60,16 @@ define([], function() {
 		},1000); 
 		
 	}
+ 	
+ 	//释放资源，包括compoted/subscrib资源等。
+ 	clockViewModel.prototype.dispose = function() {
+ 	    this.handWidth.dispose();
+ 	    this.centerLeft.dispose();
+ 	    this.fontSize.dispose();
+ 	    window.clearInterval(this.runClock);
+ 	    
+ 	    // this.myPureComputed doesn't need to be manually disposed.
+ 	}
+ 	
 	return clockViewModel;
 });

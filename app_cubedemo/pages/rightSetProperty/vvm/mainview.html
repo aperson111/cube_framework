@@ -40,7 +40,6 @@
 						<input type="checkbox" data-bind="checked: value, attr:{disabled: readonly}" />
 					<!-- /ko -->
 					<!-- ko if: editType =='dropdownlist' -->
-						
 						<!-- 
 						<cube_dropdownlist params="selectedValue: value,
 							items: options">
@@ -51,6 +50,9 @@
 							params: {selectedValue: value, items: options}
 							}"></div>
 							
+					<!-- /ko -->
+					<!-- ko if: editType =='div' -->
+						<div style="height: 100px; overflow: scroll;" data-bind="html:value"></div>	
 					<!-- /ko -->
 					<br />
 				</div>
@@ -76,6 +78,9 @@
 					<!-- /ko -->
 					<!-- ko if:	editType=='area'-->
 						<textarea data-bind="value: value, attr:{readonly: readonly}" ></textarea>
+					<!-- /ko -->
+					<!-- ko if: editType =='div' -->
+						<div style="height: 100px; overflow: auto;border: 1px #eee solid;" data-bind="html:value"></div>	
 					<!-- /ko -->
 					<br />
 				</div>

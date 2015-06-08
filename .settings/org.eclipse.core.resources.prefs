@@ -1,9 +1,10 @@
-#Thu Jun 04 10:02:56 CST 2015
+#Thu Jun 04 15:51:30 CST 2015
 eclipse.preferences.version=1
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_breadcrumbDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_collapsepanel1TemplDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_collapsepanel2TemplDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_dropdownlistDemoview.html=UTF-8
+encoding//app_cubedemo/pages/componentDemos/vvm/cube_editorDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_modaldialogDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_navbarDemoview.html=UTF-8
 encoding//app_cubedemo/pages/componentDemos/vvm/cube_pageheaderDemoview.html=UTF-8
@@ -20,6 +21,8 @@ encoding//app_lineloss/pages/head/vvm/mainview.html=UTF-8
 encoding//app_lineloss/pages/main/vvm/mainview.html=UTF-8
 encoding//framework/components/cube_breadcrumb/cube_breadcrumb.html=UTF-8
 encoding//framework/components/cube_calendar/cube_calendar.html=UTF-8
+encoding//framework/components/cube_editor/cube_editor.html=UTF-8
 encoding//framework/components/cube_modaldialog/cube_modaldialog.html=UTF-8
 encoding//framework/components/cube_navbar/cube_navbar.html=UTF-8
+encoding//framework/components/cube_richeditor/cube_richeditor.html=UTF-8
 encoding/<project>=UTF-8

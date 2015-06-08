@@ -14,7 +14,10 @@ define(['text', 'webpage'], function(text,WebPage) {
 		             "cube_dropdownlist",
 		             "cube_pageheader",
 		             "cube_modaldialog",
-		             "cube_collapsepanel"],
+		             "cube_collapsepanel",
+		             "cube_richeditor",
+		             "cube_editor",
+		             "cube_clock"],
 		vvms: ["app_cubedemo.componentDemos.cube_progressbarDemo",
 		       "app_cubedemo.componentDemos.cube_navbarDemo",
 		       "app_cubedemo.componentDemos.cube_breadcrumbDemo",
@@ -25,7 +28,10 @@ define(['text', 'webpage'], function(text,WebPage) {
 		       "app_cubedemo.componentDemos.cube_pageheaderDemo",
 		       "app_cubedemo.componentDemos.cube_collapsepanelDemo",
 		       "app_cubedemo.componentDemos.cube_collapsepanel1TemplDemo",
-		       "app_cubedemo.componentDemos.cube_collapsepanel2TemplDemo"]
+		       "app_cubedemo.componentDemos.cube_collapsepanel2TemplDemo",
+		       "app_cubedemo.componentDemos.cube_richeditorDemo",
+		       "app_cubedemo.componentDemos.cube_editorDemo",
+		       "app_cubedemo.componentDemos.cube_clockDemo"]
 	});
 
     return webp;
